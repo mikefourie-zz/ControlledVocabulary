@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
-using ControlledVocabulary;
-using Outlook = Microsoft.Office.Interop.Outlook;
-using Office = Microsoft.Office.Core;
-
+﻿//--------------------------------------------------------------------------------------------------------------------------------
+// <copyright file="ThisAddIn.cs">(c) Controlled Vocabulary on Codeplex, 2010. All other rights reserved.</copyright>
+//--------------------------------------------------------------------------------------------------------------------------------
 namespace Outlook2010CV
 {
+    using Office = Microsoft.Office.Core;
+
+    /// <summary>
+    /// ThisAddIn
+    /// </summary>
     public partial class ThisAddIn
     {
-
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
             return new Outlook2010CVAddIn();

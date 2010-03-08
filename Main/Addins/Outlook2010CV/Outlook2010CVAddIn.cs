@@ -1,7 +1,7 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Outlook2010ControlledVocabularyAddIn.cs">(c) Controlled Vocabulary on Codeplex, 2010. All other rights reserved.</copyright>
+// <copyright file="Outlook2010CVAddIn.cs">(c) Controlled Vocabulary on Codeplex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
-namespace Outlook2010ControlledVocabulary
+namespace Outlook2010CV
 {
     using System;
     using System.Drawing;
@@ -19,7 +19,7 @@ namespace Outlook2010ControlledVocabulary
     using Outlook = Microsoft.Office.Interop.Outlook;
 
     [ComVisible(true)]
-    public class Outlook2010ControlledVocabularyAddIn : IRibbonExtensibility
+    public class Outlook2010CVAddIn : IRibbonExtensibility
     {
         private string cachedRibbon;
 

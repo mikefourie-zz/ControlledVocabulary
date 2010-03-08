@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlledVocabulary", "ControlledVocabulary\ControlledVocabulary.csproj", "{A0943160-E0BD-452E-B9C9-6B9D40B7C4CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{90AB786E-5C7E-4E09-B5E9-1152B4D2DE69}"
+	ProjectSection(SolutionItems) = preProject
+		Common\CommonAssemblyInfo.cs = Common\CommonAssemblyInfo.cs
+		Common\ControlledVocabulary.ruleset = Common\ControlledVocabulary.ruleset
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outlook2010CV", "Addins\Outlook2010CV\Outlook2010CV.csproj", "{8582DA15-2292-4816-990B-3BF2F28E1C74}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs05.codeplex.com/
+		SccProjectUniqueName0 = ControlledVocabulary\\ControlledVocabulary.csproj
+		SccProjectName0 = ControlledVocabulary
+		SccLocalPath0 = ControlledVocabulary
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = Addins\\Outlook2010CV\\Outlook2010CV.csproj
+		SccProjectName2 = Addins/Outlook2010CV
+		SccLocalPath2 = Addins\\Outlook2010CV
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0943160-E0BD-452E-B9C9-6B9D40B7C4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0943160-E0BD-452E-B9C9-6B9D40B7C4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0943160-E0BD-452E-B9C9-6B9D40B7C4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0943160-E0BD-452E-B9C9-6B9D40B7C4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8582DA15-2292-4816-990B-3BF2F28E1C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8582DA15-2292-4816-990B-3BF2F28E1C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8582DA15-2292-4816-990B-3BF2F28E1C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8582DA15-2292-4816-990B-3BF2F28E1C74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -2,8 +2,8 @@
 <customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2009/07/customui" loadImage="LoadImages">
     <ribbon>
         <tabs>
-            <tab id="ControlledVocabularyTab" label="Controlled Vocabulary">
-                <group label="Email With Care" id="ControlledVocabularyButtons" >
+            <tab id="ControlledVocabTab" label="Controlled Vocab">
+                <group label="Email With Care" id="ControlledVocabButtons" >
                     DLBUTTONPLACHOLDER_DONOTREMOVE
                 </group>
             </tab>

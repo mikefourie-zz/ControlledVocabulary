@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Controlled Vocabulary on Codeplex")]
-[assembly: AssemblyProduct("ControlledVocabulary")]
+[assembly: AssemblyProduct("Controlled Vocabulary")]
 [assembly: AssemblyCopyright("Copyright © Controlled Vocabulary on Codeplex 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]

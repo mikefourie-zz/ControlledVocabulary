@@ -16,7 +16,6 @@ namespace Outlook2010CV
     using Microsoft.Office.Interop.Outlook;
     using Application = Microsoft.Office.Interop.Outlook.Application;
     using Office = Microsoft.Office.Core;
-    using Outlook = Microsoft.Office.Interop.Outlook;
 
     [ComVisible(true)]
     public class Outlook2010CVAddIn : IRibbonExtensibility
@@ -89,7 +88,13 @@ namespace Outlook2010CV
 
         public void Ribbon_Load(IRibbonUI ribbonUI)
         {
-            // ThisAddIn.ribbon = ribbonUI;
+        }
+
+        public void Guidance(IRibbonControl control)
+        {
+            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
+            string guidanceUrl = StaticHelper.GetGuidanceUrl(idParts[0]);
+            System.Diagnostics.Process.Start(guidanceUrl);
         }
 
         public void SendNormal(IRibbonControl control)

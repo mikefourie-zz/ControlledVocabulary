@@ -7,7 +7,7 @@
 			<xs:attribute name="ccRecipients" type="xs:string"/>
 			<xs:attribute name="bccRecipients" type="xs:string"/>
 			<xs:attribute name="onlineUrl" type="xs:string"/>
-            <xs:attribute name="supportUrl" type="xs:string"/>
+            <xs:attribute name="guidanceUrl" type="xs:string"/>
             <xs:attribute name="author" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>

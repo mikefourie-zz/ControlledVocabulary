@@ -64,26 +64,7 @@ namespace ControlledVocabulary
 
         public static DirectoryInfo GetInstallationPath()
         {
-            // TODO: Provide better support / handling of installation path
-            string environmentVariableValue = System.Environment.GetEnvironmentVariable("ControlledVocabularyInstallationPath", EnvironmentVariableTarget.User);
-
-            if (string.IsNullOrEmpty(environmentVariableValue))
-            {
-                string installPath = string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary", Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles));
-                if (Directory.Exists(installPath))
-                {
-                    System.Environment.SetEnvironmentVariable("ControlledVocabularyInstallationPath", installPath, EnvironmentVariableTarget.User);
-                }
-                else
-                {
-                    LogMessage(MessageType.Error, "ControlledVocabularyInstallationPath environment variable not found and app lookup failed");
-                    throw new ArgumentException("ControlledVocabularyInstallationPath environment variable not found and app lookup failed");
-                }
-
-                environmentVariableValue = installPath;
-            }
-            
-            DirectoryInfo installationPath = new DirectoryInfo(environmentVariableValue);
+            DirectoryInfo installationPath = new DirectoryInfo(string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary", Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)));
 
             if (!installationPath.Exists)
             {
@@ -91,7 +72,7 @@ namespace ControlledVocabulary
                 LogMessage(MessageType.Error, message);
                 throw new ArgumentException(message);
             }
-
+            
             return installationPath;
         }
 
@@ -139,6 +120,22 @@ namespace ControlledVocabulary
             recipients[1] = buttonConfig.ccRecipients;
             recipients[2] = buttonConfig.bccRecipients;
             return recipients;
+        }
+
+        public static string GetGuidanceUrl(string buttonId)
+        {
+            // Get the installation path
+            DirectoryInfo installationPath = GetInstallationPath();
+
+            XmlSerializer deserializer = new XmlSerializer(typeof(ButtonConfiguration));
+            ButtonConfiguration buttonConfig;
+            FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Buttons\" + buttonId + @"\config.xml"));
+            using (FileStream buttonStream = new FileStream(f.FullName, FileMode.Open, FileAccess.Read))
+            {
+                buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
+            }
+
+            return buttonConfig.guidanceUrl;
         }
 
         public static menu[] GetControlledVocabularyMenus()

@@ -31,8 +31,8 @@ public partial class ButtonConfiguration {
     private string bccRecipientsField;
     
     private string onlineUrlField;
-    
-    private string supportUrlField;
+
+    private string guidanceUrlField;
     
     private string authorField;
     
@@ -82,12 +82,13 @@ public partial class ButtonConfiguration {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string supportUrl {
+    public string guidanceUrl
+    {
         get {
-            return this.supportUrlField;
+            return this.guidanceUrlField;
         }
         set {
-            this.supportUrlField = value;
+            this.guidanceUrlField = value;
         }
     }
     

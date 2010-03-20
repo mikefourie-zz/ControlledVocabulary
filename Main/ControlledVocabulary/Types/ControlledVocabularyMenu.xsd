@@ -1,41 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="menuSeparator">
+        <xs:complexType>
+            <xs:attribute name="title" type="xs:string" use="required"/>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="menu">
         <xs:complexType>
-            <xs:sequence>
+            <xs:sequence minOccurs="0">
                 <xs:choice maxOccurs="unbounded">
-                    <xs:element maxOccurs="unbounded" name="menu">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element maxOccurs="unbounded" name="button">
-                                    <xs:complexType>
-                                        <xs:attribute name="id" type="xs:string" use="required" />
-                                        <xs:attribute name="label" type="xs:string" use="required" />
-                                        <xs:attribute name="onAction" type="xs:string" use="required" />
-                                        <xs:attribute name="tag" type="xs:string" use="required" />
-                                        <xs:attribute name="screentip" type="xs:string" use="optional" />
-                                        <xs:attribute name="supertip" type="xs:string" use="optional" />
-                                    </xs:complexType>
-                                </xs:element>
-                            </xs:sequence>
-                            <xs:attribute name="id" type="xs:string" use="required" />
-                            <xs:attribute name="label" type="xs:string" use="required" />
-                            <xs:attribute name="image" type="xs:string" use="required" />
-                        </xs:complexType>
-                    </xs:element>
-                    <xs:element name="menuSeparator">
-                        <xs:complexType>
-                            <xs:attribute name="id" type="xs:string" use="required" />
-                            <xs:attribute name="title" type="xs:string" use="required" />
-                        </xs:complexType>
-                    </xs:element>
+                    <xs:element ref="menu" maxOccurs="unbounded"/>
+                    <xs:element ref="menuSeparator" maxOccurs="unbounded"/>
+                    <xs:element ref="button" maxOccurs="unbounded"/>
                 </xs:choice>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:string" use="required" />
-            <xs:attribute name="label" type="xs:string" use="required" />
-            <xs:attribute name="size" type="xs:string" use="required" />
-            <xs:attribute name="imageMso" type="xs:string" use="required" />
-            <xs:attribute name="itemSize" type="xs:string" use="required" />
+            <xs:attribute name="size" type="xs:string"/>
+            <xs:attribute name="label" type="xs:string" use="required"/>
+            <xs:attribute name="itemSize" type="xs:string"/>
+            <xs:attribute name="imageMso" type="xs:string"/>
+            <xs:attribute name="image" type="xs:string"/>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="button">
+        <xs:complexType>
+            <xs:attribute name="tag" type="xs:string" use="required"/>
+            <xs:attribute name="supertip" type="xs:string"/>
+            <xs:attribute name="screentip" type="xs:string"/>
+            <xs:attribute name="onAction" type="xs:string" use="required"/>
+            <xs:attribute name="label" type="xs:string" use="required"/>
+            <xs:attribute name="image" type="xs:string"/>
+            <xs:attribute name="id" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

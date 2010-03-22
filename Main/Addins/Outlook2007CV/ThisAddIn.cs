@@ -17,26 +17,37 @@ namespace Outlook2007CV
     {
         private static void Send(string buttonId, string subject, OlImportance importance)
         {
-            Application outlookApp = new Outlook.Application();
-            MailItem newEmail = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
+            try
+            {
+                Application outlookApp = new Outlook.Application();
+                MailItem newEmail = (MailItem) outlookApp.CreateItem(OlItemType.olMailItem);
 
-            // Get the recipients
-            string[] recipients = StaticHelper.GetRecipients(buttonId);
-            newEmail.To = recipients[0];
-            newEmail.CC = recipients[1];
-            newEmail.BCC = recipients[2];
-            newEmail.Subject = subject;
-            newEmail.Importance = importance;
-            newEmail.Display(true);
+                // Get the recipients
+                string[] recipients = StaticHelper.GetRecipients(buttonId);
+                newEmail.To = recipients[0];
+                newEmail.CC = recipients[1];
+                newEmail.BCC = recipients[2];
+                newEmail.Subject = subject;
+                newEmail.Importance = importance;
+                newEmail.Display(true);
+            }
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+                throw;
+            }
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            this.AddMenu();
-        }
-
-        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
-        {
+            try
+            {
+                this.AddMenu();
+            }
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+            }
         }
 
         private void AddMenu()
@@ -45,15 +56,24 @@ namespace Outlook2007CV
             Office.CommandBar menuBar = this.Application.ActiveExplorer().CommandBars.ActiveMenuBar;
 
             // Add the top level new Menu
-            Office.CommandBarPopup newMenuBar = (Office.CommandBarPopup) menuBar.Controls.Add(Office.MsoControlType.msoControlPopup, Type.Missing, Type.Missing, Type.Missing, true);
+            StaticHelper.LogMessage(MessageType.Info, "Adding Controlled Vocab menu");
+            Office.CommandBarPopup newMenuBar = (Office.CommandBarPopup)menuBar.Controls.Add(Office.MsoControlType.msoControlPopup, Type.Missing, Type.Missing, Type.Missing, true);
             newMenuBar.Caption = "Controlled Vocab";
 
             // get the buttons
+            StaticHelper.LogMessage(MessageType.Info, "Getting buttons");
             menu[] buttons = StaticHelper.GetControlledVocabularyMenus();
 
             // build the buttons
+            StaticHelper.LogMessage(MessageType.Info, "Building menu");
             this.BuildMenu(newMenuBar, buttons);
+
+            StaticHelper.LogMessage(MessageType.Info, "Making menu visible");
             newMenuBar.Visible = true;
+        }
+
+        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
+        {
         }
 
         private void BuildMenu(Office.CommandBarPopup menuBar, IEnumerable<menu> buttons)
@@ -178,8 +198,15 @@ namespace Outlook2007CV
         /// </summary>
         private void InternalStartup()
         {
-            this.Startup += this.ThisAddIn_Startup;
-            this.Shutdown += this.ThisAddIn_Shutdown;
+            try
+            {
+                this.Startup += this.ThisAddIn_Startup;
+                this.Shutdown += this.ThisAddIn_Shutdown;
+            }
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+            }
         }
         
         #endregion

@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace Outlook2010CV
 {
-    using Office = Microsoft.Office.Core;
+    using ControlledVocabulary;
 
     /// <summary>
     /// ThisAddIn
@@ -12,7 +12,15 @@ namespace Outlook2010CV
     {
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
-            return new Outlook2010CVAddIn();
+            try
+            {
+                return new Outlook2010CVAddIn();
+            }
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+                throw;
+            }
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
@@ -31,8 +39,15 @@ namespace Outlook2010CV
         /// </summary>
         private void InternalStartup()
         {
-            this.Startup += this.ThisAddIn_Startup;
-            this.Shutdown += this.ThisAddIn_Shutdown;
+            try
+            {
+                this.Startup += this.ThisAddIn_Startup;
+                this.Shutdown += this.ThisAddIn_Shutdown;
+            }
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+            }
         }
         
         #endregion

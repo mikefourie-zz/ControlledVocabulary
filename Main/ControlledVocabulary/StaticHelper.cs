@@ -4,6 +4,7 @@
 namespace ControlledVocabulary
 {
     using System;
+    using System.Diagnostics;
     using System.Drawing;
     using System.Globalization;
     using System.IO;
@@ -31,7 +32,7 @@ namespace ControlledVocabulary
                 // open the configuration file for the button
                 using (FileStream buttonStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                 {
-                    buttonConfig = (ButtonConfiguration) deserializer.Deserialize(buttonStream);
+                    buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
                 }
 
                 // if an onlineUrl is present, then we look for an update
@@ -72,7 +73,7 @@ namespace ControlledVocabulary
                 LogMessage(MessageType.Error, message);
                 throw new ArgumentException(message);
             }
-            
+
             return installationPath;
         }
 
@@ -154,7 +155,7 @@ namespace ControlledVocabulary
                 XmlSerializer deserializer = new XmlSerializer(typeof(menu));
                 using (FileStream buttonStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                 {
-                    menus[i] = (menu) deserializer.Deserialize(buttonStream);
+                    menus[i] = (menu)deserializer.Deserialize(buttonStream);
                 }
 
                 i++;
@@ -163,11 +164,34 @@ namespace ControlledVocabulary
             return menus;
         }
 
-        public static void LogMessage(MessageType type, string error)
+        public static void LogMessage(MessageType messageType, string error)
         {
-            using (TextWriter tw = new StreamWriter(@"C:\CustomVocabularyLog.txt", true, Encoding.UTF8))
+            if (messageType == MessageType.Error)
             {
-                tw.WriteLine(string.Format(CultureInfo.InvariantCulture, "{0} - {1}: {2}", DateTime.Now, type, error));
+                using (EventLog eventLog = new EventLog())
+                {
+                    eventLog.Source = "ControlledVocabulary";
+                    eventLog.Log = "Application";
+                    eventLog.WriteEntry(error);
+                }
+            }
+            
+            // Get the installation path
+            DirectoryInfo installationPath = StaticHelper.GetInstallationPath();
+            if (!File.Exists(installationPath + @"\enablelogging.txt"))
+            {
+                return;
+            }
+
+            DirectoryInfo logDirectory = new DirectoryInfo(@"C:\ControlledVocabularyLog");
+            if (!logDirectory.Exists)
+            {
+                logDirectory.Create();
+            }
+
+            using (TextWriter tw = new StreamWriter(logDirectory.FullName + @"\Log.txt", true, Encoding.UTF8))
+            {
+                tw.WriteLine(string.Format(CultureInfo.InvariantCulture, "{0} - {1}: {2}", DateTime.Now, messageType, error));
             }
         }
     }

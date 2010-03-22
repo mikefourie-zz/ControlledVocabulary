@@ -36,54 +36,65 @@ namespace Outlook2010CV
 
         public string GetCustomUI(string ribbonID)
         {
-            if (!string.IsNullOrEmpty(this.cachedRibbon))
+            StaticHelper.LogMessage(MessageType.Info, "Getting Custom UI");
+            try
             {
-                return this.cachedRibbon;    
-            }
-
-            StaticHelper.CheckForUpdates();
-
-            // Get the installation path
-            DirectoryInfo installationPath = StaticHelper.GetInstallationPath();
-
-            // Get the Outlook2010.xml file
-            FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Templates\Outlook2010.xml"));
-            if (!f.Exists)
-            {
-                string message = string.Format(CultureInfo.InvariantCulture, "File not found: {0}", f.FullName);
-                StaticHelper.LogMessage(MessageType.Error, message);
-                throw new ArgumentException(message);
-            }
-
-            string ribbonXml;
-            using (TextReader tr = new StreamReader(f.FullName))
-            {
-                ribbonXml = tr.ReadToEnd();
-            }
-
-            // Iterate over Add-ins found
-            DirectoryInfo buttonRoot = new DirectoryInfo(Path.Combine(installationPath.FullName, "Buttons"));
-            DirectoryInfo[] buttons = buttonRoot.GetDirectories();
-            StringBuilder buttonXml = new StringBuilder();
-            foreach (FileInfo file in buttons.Select(button => new FileInfo(Path.Combine(button.FullName, "button.xml"))))
-            {
-                if (!file.Exists)
+                if (!string.IsNullOrEmpty(this.cachedRibbon))
                 {
-                    StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InvariantCulture, "File not found: {0}", file.FullName));
-                    continue;
+                    return this.cachedRibbon;
                 }
 
-                using (TextReader tr = new StreamReader(file.FullName))
+                StaticHelper.LogMessage(MessageType.Info, "Checking for Updates");
+                StaticHelper.CheckForUpdates();
+
+                // Get the installation path
+                DirectoryInfo installationPath = StaticHelper.GetInstallationPath();
+
+                // Get the Outlook2010.xml file
+                FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Templates\Outlook2010.xml"));
+                if (!f.Exists)
                 {
-                    buttonXml.Append(tr.ReadToEnd());
+                    string message = string.Format(CultureInfo.InvariantCulture, "File not found: {0}", f.FullName);
+                    StaticHelper.LogMessage(MessageType.Error, message);
+                    throw new ArgumentException(message);
                 }
+
+                string ribbonXml;
+                using (TextReader tr = new StreamReader(f.FullName))
+                {
+                    ribbonXml = tr.ReadToEnd();
+                }
+
+                // Iterate over Add-ins found
+                DirectoryInfo buttonRoot = new DirectoryInfo(Path.Combine(installationPath.FullName, "Buttons"));
+                DirectoryInfo[] buttons = buttonRoot.GetDirectories();
+                StringBuilder buttonXml = new StringBuilder();
+                foreach (FileInfo file in buttons.Select(button => new FileInfo(Path.Combine(button.FullName, "button.xml"))))
+                {
+                    if (!file.Exists)
+                    {
+                        StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InvariantCulture, "File not found: {0}", file.FullName));
+                        continue;
+                    }
+
+                    using (TextReader tr = new StreamReader(file.FullName))
+                    {
+                        buttonXml.Append(tr.ReadToEnd());
+                    }
+                }
+
+                // Inject the Add-ins using regular expression
+                Regex regEx = new Regex("DLBUTTONPLACHOLDER_DONOTREMOVE");
+                this.cachedRibbon = regEx.Replace(ribbonXml, buttonXml.ToString());
+                StaticHelper.LogMessage(MessageType.Info, "Ribbon = " + this.cachedRibbon);
+
+                return this.cachedRibbon;
             }
-
-            // Inject the Add-ins using regular expression
-            Regex regEx = new Regex("DLBUTTONPLACHOLDER_DONOTREMOVE");
-            this.cachedRibbon = regEx.Replace(ribbonXml, buttonXml.ToString());
-
-            return this.cachedRibbon;
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+                throw;
+            }
         }
 
         public void Ribbon_Load(IRibbonUI ribbonUI)
@@ -118,18 +129,26 @@ namespace Outlook2010CV
 
         public void Send(string buttonId, string subject, OlImportance importance)
         {
-            Application outlookApp = new ApplicationClass();
-            MailItem newEmail = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
+            try
+            {
+                Application outlookApp = new ApplicationClass();
+                MailItem newEmail = (MailItem) outlookApp.CreateItem(OlItemType.olMailItem);
 
-            // Get the recipients
-            string[] recipients = StaticHelper.GetRecipients(buttonId);
-            newEmail.To = recipients[0];
-            newEmail.CC = recipients[1];
-            newEmail.BCC = recipients[2];
+                // Get the recipients
+                string[] recipients = StaticHelper.GetRecipients(buttonId);
+                newEmail.To = recipients[0];
+                newEmail.CC = recipients[1];
+                newEmail.BCC = recipients[2];
 
-            newEmail.Subject = subject;
-            newEmail.Importance = importance;
-            newEmail.Display(true);
+                newEmail.Subject = subject;
+                newEmail.Importance = importance;
+                newEmail.Display(true);
+            }
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+                throw;
+            }
         }
     }
 }

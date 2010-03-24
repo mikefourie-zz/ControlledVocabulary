@@ -66,10 +66,32 @@ namespace ControlledVocabulary
         public static DirectoryInfo GetInstallationPath()
         {
             DirectoryInfo installationPath = new DirectoryInfo(string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary", Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)));
-
+            string paths = string.Empty;
             if (!installationPath.Exists)
             {
-                string message = string.Format(CultureInfo.InvariantCulture, "Installation Path not found: {0}", installationPath);
+                paths += installationPath.FullName + " | ";
+                if (!installationPath.FullName.Contains("x86"))
+                {
+                    installationPath = new DirectoryInfo(installationPath.FullName.Replace("Program Files", "Program Files (x86)"));
+                    if (installationPath.Exists)
+                    {
+                        return installationPath;
+                    }
+
+                    paths += installationPath.FullName + " | ";
+                }
+                else
+                {
+                    installationPath = new DirectoryInfo(installationPath.FullName.Replace("Program Files (x86)", "Program Files"));
+                    if (installationPath.Exists)
+                    {
+                        return installationPath;
+                    }
+
+                    paths += installationPath.FullName;
+                }
+
+                string message = string.Format(CultureInfo.InvariantCulture, "Installation Path not found: {0}", paths);
                 LogMessage(MessageType.Error, message);
                 throw new ArgumentException(message);
             }
@@ -174,6 +196,8 @@ namespace ControlledVocabulary
                     eventLog.Log = "Application";
                     eventLog.WriteEntry(error);
                 }
+
+                return;
             }
             
             // Get the installation path

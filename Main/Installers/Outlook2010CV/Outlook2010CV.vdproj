@@ -620,14 +620,9 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D10D0849E8B48253A02C97BC0A1A06C8"
-                    {
-                    "Name" = "8:ControlledVocabulary.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:ControlledVocabulary.dll"
             "TargetName" = "8:"
@@ -818,15 +813,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Outlook 2010 Controlled Vocabulary Add-in"
-        "ProductCode" = "8:{9D45A0E6-4B49-4900-83D9-7F4DC893052B}"
-        "PackageCode" = "8:{932E3298-DEA3-46DF-9710-05EF40AB3BDF}"
+        "ProductCode" = "8:{BA5C2D30-7087-4267-923D-9D77D3DD706B}"
+        "PackageCode" = "8:{09F2ABD1-F6B5-45AD-8666-D30DDED7927C}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.4"
+        "ProductVersion" = "8:1.0.5"
         "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

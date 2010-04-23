@@ -3,6 +3,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {
+    using System.Collections;
     using System.ComponentModel;
     using System.Diagnostics;
 
@@ -19,6 +20,24 @@ namespace ControlledVocabulary
             {
                 EventLog.CreateEventSource("ControlledVocabulary", "Application");
             }
+        }
+
+        protected override void OnBeforeInstall(IDictionary savedState)
+        {
+            try
+            {
+                Process[] processes = Process.GetProcessesByName("OUTLOOK");
+                foreach (Process process in processes)
+                {
+                    process.Kill();
+                }
+            }
+            catch
+            {
+                // Do Nothing
+            }
+
+            base.OnBeforeInstall(savedState);
         }
     }
 }

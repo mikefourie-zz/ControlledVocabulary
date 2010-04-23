@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="GlobalSuppressions.cs">(c) Controlled Vocabulary on Codeplex, 2010. All other rights reserved.</copyright>
+// <copyright file="GlobalSuppressions.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "Outlook2007CV.ThisFormRegionCollection.#Item[Microsoft.Office.Interop.Outlook.Explorer]")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope = "member", Target = "Outlook2007CV.ThisFormRegionCollection.#Item[Microsoft.Office.Interop.Outlook.Inspector]")]

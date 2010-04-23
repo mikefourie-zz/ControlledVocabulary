@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Installer1.cs">(c) Controlled Vocabulary on Codeplex, 2010. All other rights reserved.</copyright>
+// <copyright file="Installer1.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {

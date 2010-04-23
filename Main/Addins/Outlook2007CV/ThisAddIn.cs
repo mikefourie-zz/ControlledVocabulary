@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="ThisAddIn.cs">(c) Controlled Vocabulary on Codeplex, 2010. All other rights reserved.</copyright>
+// <copyright file="ThisAddIn.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace Outlook2007CV
 {
@@ -20,7 +20,7 @@ namespace Outlook2007CV
             try
             {
                 Application outlookApp = new Outlook.Application();
-                MailItem newEmail = (MailItem) outlookApp.CreateItem(OlItemType.olMailItem);
+                MailItem newEmail = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
 
                 // Get the recipients
                 string[] recipients = StaticHelper.GetRecipients(buttonId);

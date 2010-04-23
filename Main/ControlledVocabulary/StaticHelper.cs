@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="StaticHelper.cs">(c) Controlled Vocabulary on Codeplex, 2010. All other rights reserved.</copyright>
+// <copyright file="StaticHelper.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {

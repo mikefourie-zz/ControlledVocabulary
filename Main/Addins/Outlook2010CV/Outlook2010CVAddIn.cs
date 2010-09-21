@@ -181,8 +181,11 @@ namespace Outlook2010CV
 
                 // Get the recipients
                 string[] recipients = StaticHelper.GetRecipients(buttonId);
-                Recipient recipRequired = newMeeting.Recipients.Add(recipients[0]);
-                recipRequired.Type = (int)OlMeetingRecipientType.olRequired;
+                if (!string.IsNullOrEmpty(recipients[1]))
+                {
+                    Recipient recipRequired = newMeeting.Recipients.Add(recipients[0]);
+                    recipRequired.Type = (int) OlMeetingRecipientType.olRequired;
+                }
 
                 if (!string.IsNullOrEmpty(recipients[1]))
                 {

@@ -18,6 +18,10 @@ namespace ControlledVocabulary
 
         public static void CheckForUpdates()
         {
+            try
+            {
+
+
             // Get the installation path
             DirectoryInfo installationPath = GetInstallationPath();
 
@@ -54,12 +58,20 @@ namespace ControlledVocabulary
                             {
                                 using (TextWriter tw = new StreamWriter(Path.Combine(file.DirectoryName, @"button.xml")))
                                 {
+                                    LogMessage(MessageType.Info, "Updating menu with online updates");
                                     tw.Write(latestMenu);
                                 }
                             }
                         }
                     }
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                LogMessage(MessageType.Warning, "Update check failed." + ex.Message);
+
+                // swallow the error.
             }
         }
 

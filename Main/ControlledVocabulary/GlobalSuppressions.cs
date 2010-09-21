@@ -10,3 +10,4 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Scope = "member", Target = "ControlledVocabulary.Installer1.#OnBeforeInstall(System.Collections.IDictionary)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1302:DoNotHardcodeLocaleSpecificStrings", MessageId = "Program Files", Scope = "member", Target = "ControlledVocabulary.StaticHelper.#GetInstallationPath()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1302:DoNotHardcodeLocaleSpecificStrings", MessageId = "Program Files (x86)", Scope = "member", Target = "ControlledVocabulary.StaticHelper.#GetInstallationPath()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "ControlledVocabulary.StaticHelper.#CheckForUpdates()")]

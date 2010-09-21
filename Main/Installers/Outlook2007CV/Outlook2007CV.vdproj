@@ -820,15 +820,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary Add-in for Outlook 2007"
-        "ProductCode" = "8:{FFEC642F-F19A-4E5B-AE3C-6A3D3C94A4C1}"
-        "PackageCode" = "8:{FEDE29D9-7FF6-4E60-AAC9-6DF2C0F5B509}"
+        "ProductCode" = "8:{42054676-7387-4615-B7CD-9C70046F2C08}"
+        "PackageCode" = "8:{7E7C749C-192B-4CBF-8A06-35482D7BFB6B}"
         "UpgradeCode" = "8:{1E40E945-483F-4217-8D20-41906DB1E444}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.6"
+        "ProductVersion" = "8:1.0.7"
         "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1357,7 +1357,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DE34B1C1E78E4523ABD3657A3C9ABDE4"
             {
-            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Release\\ControlledVocabulary.dll"
+            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Debug\\ControlledVocabulary.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C671ED7E52DD4E99AAEB917DCEC1EE44"
@@ -1385,7 +1385,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FA64CC58AFAC4E19ACC254B1B89921F8"
             {
-            "SourcePath" = "8:..\\..\\Addins\\Outlook2007CV\\obj\\Release\\Outlook2007CV.dll"
+            "SourcePath" = "8:..\\..\\Addins\\Outlook2007CV\\obj\\Debug\\Outlook2007CV.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C671ED7E52DD4E99AAEB917DCEC1EE44"

@@ -34,6 +34,12 @@
         "Entry"
         {
         "MsmKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
+        "OwnerKey" = "8:_78DB6874AEFBDDC2293C8837BCC3EFC8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
         "OwnerKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -41,12 +47,6 @@
         {
         "MsmKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
         "OwnerKey" = "8:_8A1AF2345305D77F963C567F08DF5D5F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
-        "OwnerKey" = "8:_78DB6874AEFBDDC2293C8837BCC3EFC8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +88,7 @@
         "Entry"
         {
         "MsmKey" = "8:_7084BB1718A5EA31B8F73494115112B4"
-        "OwnerKey" = "8:_A37AC6F7E961C5D915E12CF77DEE86CD"
+        "OwnerKey" = "8:_63ECCD6561D321F43FAC25656285B8AF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,19 +100,19 @@
         "Entry"
         {
         "MsmKey" = "8:_7084BB1718A5EA31B8F73494115112B4"
+        "OwnerKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7084BB1718A5EA31B8F73494115112B4"
         "OwnerKey" = "8:_78DB6874AEFBDDC2293C8837BCC3EFC8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7084BB1718A5EA31B8F73494115112B4"
-        "OwnerKey" = "8:_63ECCD6561D321F43FAC25656285B8AF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7084BB1718A5EA31B8F73494115112B4"
-        "OwnerKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
+        "OwnerKey" = "8:_A37AC6F7E961C5D915E12CF77DEE86CD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,13 +154,13 @@
         "Entry"
         {
         "MsmKey" = "8:_C067491323CD1945435DB2C7AA512952"
-        "OwnerKey" = "8:_D7AFDE4848C6B7AEF8E36E5AE4E77771"
+        "OwnerKey" = "8:_8A1AF2345305D77F963C567F08DF5D5F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_C067491323CD1945435DB2C7AA512952"
-        "OwnerKey" = "8:_8A1AF2345305D77F963C567F08DF5D5F"
+        "OwnerKey" = "8:_D7AFDE4848C6B7AEF8E36E5AE4E77771"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,12 +214,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8A1AF2345305D77F963C567F08DF5D5F"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -227,6 +221,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_78DB6874AEFBDDC2293C8837BCC3EFC8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_366F48CB89CE3F565FCDA736F006EAE7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -858,15 +858,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary Add-in for Outlook 2010"
-        "ProductCode" = "8:{E586B002-3A14-4ECC-ADD2-46F052F8AA13}"
-        "PackageCode" = "8:{7BF3A83E-A485-480A-9830-CED9F737BA15}"
+        "ProductCode" = "8:{D4602D13-1DB9-401D-8798-DFBF85E54DF8}"
+        "PackageCode" = "8:{F230AAE9-9F12-48B3-93EF-BF9D6883E771}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.6"
+        "ProductVersion" = "8:1.0.7"
         "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1455,7 +1455,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_55CEE453FE944B36AB4C8AA8F3D57E35"
             {
-            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Release\\ControlledVocabulary.dll"
+            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Debug\\ControlledVocabulary.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
@@ -1539,7 +1539,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ED12BFC14EEA4F5398085A3340DEECF2"
             {
-            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Release\\Outlook2010CV.dll"
+            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Debug\\Outlook2010CV.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"

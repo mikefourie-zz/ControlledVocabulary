@@ -20,52 +20,50 @@ namespace ControlledVocabulary
         {
             try
             {
+                // Get the installation path
+                DirectoryInfo installationPath = GetInstallationPath();
 
+                XmlSerializer deserializer = new XmlSerializer(typeof(ButtonConfiguration));
+                ButtonConfiguration buttonConfig;
 
-            // Get the installation path
-            DirectoryInfo installationPath = GetInstallationPath();
-
-            XmlSerializer deserializer = new XmlSerializer(typeof(ButtonConfiguration));
-            ButtonConfiguration buttonConfig;
-
-            // Iterate over Add-ins found
-            DirectoryInfo buttonRoot = new DirectoryInfo(Path.Combine(installationPath.FullName, "Buttons"));
-            DirectoryInfo[] buttons = buttonRoot.GetDirectories();
-            foreach (FileInfo file in buttons.Select(button => new FileInfo(Path.Combine(button.FullName, "config.xml"))))
-            {
-                // open the configuration file for the button
-                using (FileStream buttonStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
+                // Iterate over Add-ins found
+                DirectoryInfo buttonRoot = new DirectoryInfo(Path.Combine(installationPath.FullName, "Buttons"));
+                DirectoryInfo[] buttons = buttonRoot.GetDirectories();
+                foreach (FileInfo file in buttons.Select(button => new FileInfo(Path.Combine(button.FullName, "config.xml"))))
                 {
-                    buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
-                }
-
-                // if an onlineUrl is present, then we look for an update
-                if (!string.IsNullOrEmpty(buttonConfig.onlineUrl))
-                {
-                    string currentMenu;
-                    using (TextReader tr = new StreamReader(Path.Combine(file.DirectoryName, @"button.xml")))
+                    // open the configuration file for the button
+                    using (FileStream buttonStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                     {
-                        currentMenu = tr.ReadToEnd();
+                        buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
                     }
 
-                    using (System.Net.WebClient client = new System.Net.WebClient())
+                    // if an onlineUrl is present, then we look for an update
+                    if (!string.IsNullOrEmpty(buttonConfig.onlineUrl))
                     {
-                        Stream myStream = client.OpenRead(buttonConfig.onlineUrl);
-                        using (StreamReader sr = new StreamReader(myStream))
+                        string currentMenu;
+                        using (TextReader tr = new StreamReader(Path.Combine(file.DirectoryName, @"button.xml")))
                         {
-                            string latestMenu = sr.ReadToEnd();
-                            if (latestMenu != currentMenu)
+                            currentMenu = tr.ReadToEnd();
+                        }
+
+                        using (System.Net.WebClient client = new System.Net.WebClient())
+                        {
+                            Stream myStream = client.OpenRead(buttonConfig.onlineUrl);
+                            using (StreamReader sr = new StreamReader(myStream))
                             {
-                                using (TextWriter tw = new StreamWriter(Path.Combine(file.DirectoryName, @"button.xml")))
+                                string latestMenu = sr.ReadToEnd();
+                                if (latestMenu != currentMenu)
                                 {
-                                    LogMessage(MessageType.Info, "Updating menu with online updates");
-                                    tw.Write(latestMenu);
+                                    using (TextWriter tw = new StreamWriter(Path.Combine(file.DirectoryName, @"button.xml")))
+                                    {
+                                        LogMessage(MessageType.Info, "Updating menu with online updates");
+                                        tw.Write(latestMenu);
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
             }
             catch (Exception ex)
             {
@@ -189,7 +187,7 @@ namespace ControlledVocabulary
 
                 return;
             }
-            
+
             // Get the installation path
             DirectoryInfo installationPath = StaticHelper.GetInstallationPath();
             if (!File.Exists(installationPath + @"\enablelogging.txt"))

@@ -142,7 +142,58 @@ namespace Outlook2010CV
 
                 newEmail.Subject = subject;
                 newEmail.Importance = importance;
-                newEmail.Display(true);
+                newEmail.Recipients.ResolveAll();
+                newEmail.Display();
+            }
+            catch (System.Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+                throw;
+            }
+        }
+
+        public void MeetingNormal(IRibbonControl control)
+        {
+            // First we need to find which Button was clicked
+            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
+            this.Meeting(idParts[0], control.Tag, OlImportance.olImportanceNormal);
+        }
+
+        public void MeetingHigh(IRibbonControl control)
+        {
+            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
+            this.Meeting(idParts[0], control.Tag, OlImportance.olImportanceHigh);
+        }
+
+        public void MeetingLow(IRibbonControl control)
+        {
+            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
+            this.Send(idParts[0], control.Tag, OlImportance.olImportanceLow);
+        }
+
+        public void Meeting(string buttonId, string subject, OlImportance importance)
+        {
+            try
+            {
+                Application outlookApp = new ApplicationClass();
+                AppointmentItem newMeeting = (AppointmentItem)outlookApp.CreateItem(OlItemType.olAppointmentItem);
+                newMeeting.MeetingStatus = OlMeetingStatus.olMeeting;
+
+                // Get the recipients
+                string[] recipients = StaticHelper.GetRecipients(buttonId);
+                Recipient recipRequired = newMeeting.Recipients.Add(recipients[0]);
+                recipRequired.Type = (int)OlMeetingRecipientType.olRequired;
+
+                if (!string.IsNullOrEmpty(recipients[1]))
+                {
+                    Recipient recipOptional = newMeeting.Recipients.Add(recipients[1]);
+                    recipOptional.Type = (int) OlMeetingRecipientType.olOptional;
+                }
+
+                newMeeting.Subject = subject;
+                newMeeting.Importance = importance;
+                newMeeting.Recipients.ResolveAll();
+                newMeeting.Display();
             }
             catch (System.Exception ex)
             {

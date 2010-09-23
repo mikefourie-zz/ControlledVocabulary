@@ -1,4 +1,4 @@
-﻿<menu id="ZuluMail" label="New Zulu Mail" size="large" imageMso="OutlookGlobe" itemSize="large">
+﻿<menu id="ZuluMail" label="Zulu" size="large" imageMso="OutlookGlobe" itemSize="large">
     <menu id="ZuluMail...MailBug" label="Bug:" image="ZuluMail...Red.png">
         <button id="ZuluMail...bugArchitecture" label="Architecture" onAction="SendHigh" tag="Bug: Architecture - " screentip="Log an Architecture Bug" supertip="High Importance Recommended"/>
         <button id="ZuluMail...bugBuild" label="Build" onAction="SendNormal" tag="Bug: Build - "/>

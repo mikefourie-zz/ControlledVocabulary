@@ -48,16 +48,22 @@ namespace ControlledVocabulary
 
                         using (System.Net.WebClient client = new System.Net.WebClient())
                         {
+                            // prevent file caching by windows
+                            client.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+
                             Stream myStream = client.OpenRead(buttonConfig.onlineUrl);
-                            using (StreamReader sr = new StreamReader(myStream))
+                            if (myStream != null)
                             {
-                                string latestMenu = sr.ReadToEnd();
-                                if (latestMenu != currentMenu)
+                                using (StreamReader sr = new StreamReader(myStream))
                                 {
-                                    using (TextWriter tw = new StreamWriter(Path.Combine(file.DirectoryName, @"button.xml")))
+                                    string latestMenu = sr.ReadToEnd();
+                                    if (latestMenu != currentMenu)
                                     {
-                                        LogMessage(MessageType.Info, "Updating menu with online updates");
-                                        tw.Write(latestMenu);
+                                        using (TextWriter tw = new StreamWriter(Path.Combine(file.DirectoryName, @"button.xml")))
+                                        {
+                                            LogMessage(MessageType.Info, "Updating menu with online updates");
+                                            tw.Write(latestMenu);
+                                        }
                                     }
                                 }
                             }

@@ -184,13 +184,13 @@ namespace Outlook2010CV
                 if (!string.IsNullOrEmpty(recipients[1]))
                 {
                     Recipient recipRequired = newMeeting.Recipients.Add(recipients[0]);
-                    recipRequired.Type = (int) OlMeetingRecipientType.olRequired;
+                    recipRequired.Type = (int)OlMeetingRecipientType.olRequired;
                 }
 
                 if (!string.IsNullOrEmpty(recipients[1]))
                 {
                     Recipient recipOptional = newMeeting.Recipients.Add(recipients[1]);
-                    recipOptional.Type = (int) OlMeetingRecipientType.olOptional;
+                    recipOptional.Type = (int)OlMeetingRecipientType.olOptional;
                 }
 
                 newMeeting.Subject = subject;

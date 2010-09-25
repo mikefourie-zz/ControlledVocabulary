@@ -21,11 +21,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outlook2007CV", "Addins\Out
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Outlook2007CV", "Installers\Outlook2007CV\Outlook2007CV.vdproj", "{54D0FCA7-080D-4CF9-B748-5D684891B534}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "ButtonManager\Manager.csproj", "{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs05.codeplex.com/
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs05
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = ControlledVocabulary\\ControlledVocabulary.csproj
 		SccProjectName1 = ControlledVocabulary
@@ -46,6 +48,9 @@ Global
 		SccProjectTopLevelParentUniqueName5 = Main.sln
 		SccProjectName5 = Installers/Outlook2007CV
 		SccLocalPath5 = Installers\\Outlook2007CV
+		SccProjectUniqueName6 = ButtonManager\\Manager.csproj
+		SccProjectName6 = ButtonManager
+		SccLocalPath6 = ButtonManager
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +111,18 @@ Global
 		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Release|Any CPU.Build.0 = Release
 		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Release|Mixed Platforms.ActiveCfg = Release
 		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Release|x86.ActiveCfg = Release
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Debug|Any CPU.Build.0 = Debug|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Debug|x86.ActiveCfg = Debug|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Debug|x86.Build.0 = Debug|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Release|Any CPU.ActiveCfg = Release|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Release|Any CPU.Build.0 = Release|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Release|x86.ActiveCfg = Release|x86
+		{1E9195F9-83CB-44B9-A3CA-5FA56D36111E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

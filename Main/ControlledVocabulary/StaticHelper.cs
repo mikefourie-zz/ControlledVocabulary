@@ -119,23 +119,81 @@ namespace ControlledVocabulary
             return new Bitmap(f.FullName);
         }
 
-        public static string[] GetRecipients(string buttonId)
+        public static string[] GetRecipients(string buttonId, string controlId)
         {
             // Get the installation path
             DirectoryInfo installationPath = GetInstallationPath();
+            string[] recipients = new string[3];
+            bool foundrecipients = false;
 
-            XmlSerializer deserializer = new XmlSerializer(typeof(ButtonConfiguration));
-            ButtonConfiguration buttonConfig;
-            FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Buttons\" + buttonId + @"\config.xml"));
+            XmlSerializer deserializer = new XmlSerializer(typeof(menu));
+            menu cvmenu;
+            FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Buttons\" + buttonId + @"\button.xml"));
             using (FileStream buttonStream = new FileStream(f.FullName, FileMode.Open, FileAccess.Read))
             {
-                buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
+                cvmenu = (menu)deserializer.Deserialize(buttonStream);
             }
 
-            string[] recipients = new string[3];
-            recipients[0] = buttonConfig.toRecipients;
-            recipients[1] = buttonConfig.ccRecipients;
-            recipients[2] = buttonConfig.bccRecipients;
+            foreach (var item in cvmenu.Items)
+            {
+                if (foundrecipients)
+                {
+                    break;
+                }
+
+                if (item is button)
+                {
+                    button b = (button)item;
+                    if (b.id == controlId)
+                    {
+                        if (!string.IsNullOrEmpty(b.toRecipients))
+                        {
+                            recipients[0] = b.toRecipients;
+                            recipients[1] = b.ccRecipients;
+                            recipients[2] = b.bccRecipients;
+                            foundrecipients = true;
+                        }
+
+                        break;
+                    }
+                }
+                else if (item is menu)
+                {
+                    menu m = (menu)item;
+                    foreach (button b in m.Items)
+                    {
+                        if (b.id == controlId)
+                        {
+                            if (!string.IsNullOrEmpty(b.toRecipients))
+                            {
+                                recipients[0] = b.toRecipients;
+                                recipients[1] = b.ccRecipients;
+                                recipients[2] = b.bccRecipients;
+                                foundrecipients = true;
+                            }
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!foundrecipients)
+            {
+                deserializer = new XmlSerializer(typeof(ButtonConfiguration));
+
+                ButtonConfiguration buttonConfig;
+                f = new FileInfo(Path.Combine(installationPath.FullName, @"Buttons\" + buttonId + @"\config.xml"));
+                using (FileStream buttonStream = new FileStream(f.FullName, FileMode.Open, FileAccess.Read))
+                {
+                    buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
+                }
+
+                recipients[0] = buttonConfig.toRecipients;
+                recipients[1] = buttonConfig.ccRecipients;
+                recipients[2] = buttonConfig.bccRecipients;
+            }
+
             return recipients;
         }
 
@@ -173,7 +231,7 @@ namespace ControlledVocabulary
                 {
                     menus[i] = (menu)deserializer.Deserialize(buttonStream);
                 }
-
+                
                 i++;
             }
 

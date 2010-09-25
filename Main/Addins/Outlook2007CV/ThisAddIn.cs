@@ -5,6 +5,7 @@ namespace Outlook2007CV
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using ControlledVocabulary;
     using Microsoft.Office.Interop.Outlook;
     using Office = Microsoft.Office.Core;
@@ -15,15 +16,18 @@ namespace Outlook2007CV
     /// </summary>
     public partial class ThisAddIn
     {
-        private static void Send(string buttonId, string subject, OlImportance importance)
+        private static void Send(Microsoft.Office.Core.CommandBarButton clickedControl, string subject, OlImportance importance)
         {
             try
             {
+                // First we need to find which Button was clicked
+                string[] idParts = clickedControl.DescriptionText.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
+
                 Application outlookApp = new Outlook.Application();
                 MailItem newEmail = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
 
                 // Get the recipients
-                string[] recipients = StaticHelper.GetRecipients(buttonId);
+                string[] recipients = StaticHelper.GetRecipients(idParts[0], clickedControl.Id.ToString(CultureInfo.InvariantCulture));
                 newEmail.To = recipients[0];
                 newEmail.CC = recipients[1];
                 newEmail.BCC = recipients[2];
@@ -171,23 +175,17 @@ namespace Outlook2007CV
 
         private void HandleMenuClickNormal(Microsoft.Office.Core.CommandBarButton clickedControl, ref bool cancelDefault)
         {
-            // First we need to find which Button was clicked
-            string[] idParts = clickedControl.DescriptionText.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            Send(idParts[0], clickedControl.Tag, OlImportance.olImportanceNormal);
+            Send(clickedControl, clickedControl.Tag, OlImportance.olImportanceNormal);
         }
 
         private void HandleMenuClickHigh(Microsoft.Office.Core.CommandBarButton clickedControl, ref bool cancelDefault)
         {
-            // First we need to find which Button was clicked
-            string[] idParts = clickedControl.DescriptionText.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            Send(idParts[0], clickedControl.Tag, OlImportance.olImportanceHigh);
+            Send(clickedControl, clickedControl.Tag, OlImportance.olImportanceHigh);
         }
 
         private void HandleMenuClickLow(Microsoft.Office.Core.CommandBarButton clickedControl, ref bool cancelDefault)
         {
-            // First we need to find which Button was clicked
-            string[] idParts = clickedControl.DescriptionText.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            Send(idParts[0], clickedControl.Tag, OlImportance.olImportanceLow);
+            Send(clickedControl, clickedControl.Tag, OlImportance.olImportanceLow);
         }
 
         #region VSTO generated code

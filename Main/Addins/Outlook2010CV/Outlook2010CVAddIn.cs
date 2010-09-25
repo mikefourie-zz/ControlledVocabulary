@@ -83,9 +83,18 @@ namespace Outlook2010CV
                     }
                 }
 
+                // now for a bit of a hack. need to move to objects in a future release
+                string readXml = buttonXml.ToString();
+                Regex regEx = new Regex(" toRecipients=\"[^\"]*\"");
+                readXml = regEx.Replace(readXml, string.Empty);
+                regEx = new Regex(" ccRecipients=\"[^\"]*\"");
+                readXml = regEx.Replace(readXml, string.Empty);
+                regEx = new Regex(" bccRecipients=\"[^\"]*\"");
+                readXml = regEx.Replace(readXml, string.Empty);
+
                 // Inject the Add-ins using regular expression
-                Regex regEx = new Regex("DLBUTTONPLACHOLDER_DONOTREMOVE");
-                this.cachedRibbon = regEx.Replace(ribbonXml, buttonXml.ToString());
+                regEx = new Regex("DLBUTTONPLACHOLDER_DONOTREMOVE");
+                this.cachedRibbon = regEx.Replace(ribbonXml, readXml);
                 StaticHelper.LogMessage(MessageType.Info, "Ribbon = " + this.cachedRibbon);
 
                 return this.cachedRibbon;
@@ -110,32 +119,29 @@ namespace Outlook2010CV
 
         public void SendNormal(IRibbonControl control)
         {
-            // First we need to find which Button was clicked
-            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            this.Send(idParts[0], control.Tag, OlImportance.olImportanceNormal);
+            this.Send(control, control.Tag, OlImportance.olImportanceNormal);
         }
 
         public void SendHigh(IRibbonControl control)
         {
-            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            this.Send(idParts[0], control.Tag, OlImportance.olImportanceHigh);
+            this.Send(control, control.Tag, OlImportance.olImportanceHigh);
         }
 
         public void SendLow(IRibbonControl control)
         {
-            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            this.Send(idParts[0], control.Tag, OlImportance.olImportanceLow);
+            this.Send(control, control.Tag, OlImportance.olImportanceLow);
         }
 
-        public void Send(string buttonId, string subject, OlImportance importance)
+        public void Send(IRibbonControl control, string subject, OlImportance importance)
         {
             try
             {
+                string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
                 Application outlookApp = new ApplicationClass();
                 MailItem newEmail = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
 
                 // Get the recipients
-                string[] recipients = StaticHelper.GetRecipients(buttonId);
+                string[] recipients = StaticHelper.GetRecipients(idParts[0], control.Id);
                 newEmail.To = recipients[0];
                 newEmail.CC = recipients[1];
                 newEmail.BCC = recipients[2];
@@ -154,33 +160,30 @@ namespace Outlook2010CV
 
         public void MeetingNormal(IRibbonControl control)
         {
-            // First we need to find which Button was clicked
-            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            this.Meeting(idParts[0], control.Tag, OlImportance.olImportanceNormal);
+            this.Meeting(control, control.Tag, OlImportance.olImportanceNormal);
         }
 
         public void MeetingHigh(IRibbonControl control)
         {
-            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            this.Meeting(idParts[0], control.Tag, OlImportance.olImportanceHigh);
+            this.Meeting(control, control.Tag, OlImportance.olImportanceHigh);
         }
 
         public void MeetingLow(IRibbonControl control)
         {
-            string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-            this.Send(idParts[0], control.Tag, OlImportance.olImportanceLow);
+            this.Meeting(control, control.Tag, OlImportance.olImportanceLow);
         }
 
-        public void Meeting(string buttonId, string subject, OlImportance importance)
+        public void Meeting(IRibbonControl control, string subject, OlImportance importance)
         {
             try
             {
+                string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
                 Application outlookApp = new ApplicationClass();
                 AppointmentItem newMeeting = (AppointmentItem)outlookApp.CreateItem(OlItemType.olAppointmentItem);
                 newMeeting.MeetingStatus = OlMeetingStatus.olMeeting;
 
                 // Get the recipients
-                string[] recipients = StaticHelper.GetRecipients(buttonId);
+                string[] recipients = StaticHelper.GetRecipients(idParts[0], control.Id);
                 if (!string.IsNullOrEmpty(recipients[1]))
                 {
                     Recipient recipRequired = newMeeting.Recipients.Add(recipients[0]);

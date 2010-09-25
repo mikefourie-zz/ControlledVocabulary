@@ -11,3 +11,4 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1302:DoNotHardcodeLocaleSpecificStrings", MessageId = "Program Files", Scope = "member", Target = "ControlledVocabulary.StaticHelper.#GetInstallationPath()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1302:DoNotHardcodeLocaleSpecificStrings", MessageId = "Program Files (x86)", Scope = "member", Target = "ControlledVocabulary.StaticHelper.#GetInstallationPath()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "ControlledVocabulary.StaticHelper.#CheckForUpdates()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily", Scope = "member", Target = "ControlledVocabulary.StaticHelper.#GetRecipients(System.String,System.String)")]

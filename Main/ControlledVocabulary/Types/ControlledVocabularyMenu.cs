@@ -162,7 +162,13 @@ public partial class menu {
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class button {
-    
+
+    private string toRecipientsField;
+
+    private string ccRecipientsField;
+
+    private string bccRecipientsField;
+
     private string tagField;
     
     private string supertipField;
@@ -176,7 +182,49 @@ public partial class button {
     private string imageField;
     
     private string idField;
-    
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string toRecipients
+    {
+        get
+        {
+            return this.toRecipientsField;
+        }
+        set
+        {
+            this.toRecipientsField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string ccRecipients
+    {
+        get
+        {
+            return this.ccRecipientsField;
+        }
+        set
+        {
+            this.ccRecipientsField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string bccRecipients
+    {
+        get
+        {
+            return this.bccRecipientsField;
+        }
+        set
+        {
+            this.bccRecipientsField = value;
+        }
+    }
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
     public string tag {

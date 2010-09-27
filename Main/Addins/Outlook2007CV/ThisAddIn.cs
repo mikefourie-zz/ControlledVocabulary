@@ -99,29 +99,34 @@ namespace Outlook2007CV
                         // the name of the menu is the name of the file
                         if (categoryMenu.Items.Length > 0)
                         {
-                            for (int j = 0; j < categoryMenu.Items.Length; j++)
+                            int j = 0;
+                            foreach (var item in categoryMenu.Items)
                             {
-                                button actionMenu = (button)categoryMenu.Items[j];
-                                Office.CommandBarButton actionButton = (Office.CommandBarButton)categoryButton.Controls.Add(Office.MsoControlType.msoControlButton, this.missing, this.missing, j + 1, true);
-                                actionButton.Caption = actionMenu.label;
-                                switch (actionMenu.onAction)
+                                if (item is button)
                                 {
-                                    case "SendNormal":
-                                        actionButton.Click += this.HandleMenuClickNormal;
-                                        break;
-                                    case "SendHigh":
-                                        actionButton.Click += this.HandleMenuClickHigh;
-                                        break;
-                                    case "SendLow":
-                                        actionButton.Click += this.HandleMenuClickLow;
-                                        break;
-                                    case "Guidance":
-                                        actionButton.Click += this.HandleMenuClickGuidance;
-                                        break;
+                                    button actionMenu = (button)item;
+                                    Office.CommandBarButton actionButton = (Office.CommandBarButton)categoryButton.Controls.Add(Office.MsoControlType.msoControlButton, this.missing, this.missing, j + 1, true);
+                                    actionButton.Caption = actionMenu.label;
+                                    switch (actionMenu.onAction)
+                                    {
+                                        case "SendNormal":
+                                            actionButton.Click += this.HandleMenuClickNormal;
+                                            break;
+                                        case "SendHigh":
+                                            actionButton.Click += this.HandleMenuClickHigh;
+                                            break;
+                                        case "SendLow":
+                                            actionButton.Click += this.HandleMenuClickLow;
+                                            break;
+                                        case "Guidance":
+                                            actionButton.Click += this.HandleMenuClickGuidance;
+                                            break;
+                                    }
+
+                                    actionButton.Tag = actionMenu.tag;
+                                    actionButton.DescriptionText = actionMenu.id;
+                                    j++;
                                 }
-                                
-                                actionButton.Tag = actionMenu.tag;
-                                actionButton.DescriptionText = actionMenu.id;
                             }
                         }
                     }

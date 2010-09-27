@@ -412,7 +412,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_096464B31EA7F2187946EE0799437E66"
@@ -858,15 +858,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary Add-in for Outlook 2010"
-        "ProductCode" = "8:{101B3489-AE5C-4EC8-80A5-17A397D41A8A}"
-        "PackageCode" = "8:{E6B22EE8-45C2-462A-A34F-E3930632A6BD}"
+        "ProductCode" = "8:{433F7FBE-0199-41C5-8817-757223E3C3FF}"
+        "PackageCode" = "8:{D8422B69-0204-44CD-81FE-9618CD4C30FE}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.9"
+        "ProductVersion" = "8:1.0.10"
         "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1455,7 +1455,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_55CEE453FE944B36AB4C8AA8F3D57E35"
             {
-            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Debug\\ControlledVocabulary.dll"
+            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Release\\ControlledVocabulary.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
@@ -1539,7 +1539,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ED12BFC14EEA4F5398085A3340DEECF2"
             {
-            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Debug\\Outlook2010CV.dll"
+            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Release\\Outlook2010CV.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"

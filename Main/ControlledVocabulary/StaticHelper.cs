@@ -160,19 +160,23 @@ namespace ControlledVocabulary
                 else if (item is menu)
                 {
                     menu m = (menu)item;
-                    foreach (button b in m.Items)
+                    foreach (var b in m.Items)
                     {
-                        if (b.id == controlId)
+                        if (b is button)
                         {
-                            if (!string.IsNullOrEmpty(b.toRecipients))
+                            button bb = (button)b;
+                            if (bb.id == controlId)
                             {
-                                recipients[0] = b.toRecipients;
-                                recipients[1] = b.ccRecipients;
-                                recipients[2] = b.bccRecipients;
-                                foundrecipients = true;
-                            }
+                                if (!string.IsNullOrEmpty(bb.toRecipients))
+                                {
+                                    recipients[0] = bb.toRecipients;
+                                    recipients[1] = bb.ccRecipients;
+                                    recipients[2] = bb.bccRecipients;
+                                    foundrecipients = true;
+                                }
 
-                            break;
+                                break;
+                            }
                         }
                     }
                 }

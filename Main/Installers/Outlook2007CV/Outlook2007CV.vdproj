@@ -549,7 +549,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.0.0.10, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_5BFBA454AEF5371692AD3F8E3F0583F4"
@@ -820,15 +820,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary Add-in for Outlook 2007"
-        "ProductCode" = "8:{11610375-37C4-459F-8D8F-55F07FEB8255}"
-        "PackageCode" = "8:{802388B5-9E7F-4B17-AB71-DA0C0B483B4E}"
+        "ProductCode" = "8:{9342A186-11E6-4572-AECC-E54B0CFE25AA}"
+        "PackageCode" = "8:{B715D907-0698-44FB-BB75-ACFFB115B532}"
         "UpgradeCode" = "8:{1E40E945-483F-4217-8D20-41906DB1E444}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.10"
+        "ProductVersion" = "8:1.0.11"
         "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

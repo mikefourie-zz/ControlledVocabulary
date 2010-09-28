@@ -145,10 +145,21 @@ namespace Outlook2010CV
                 newEmail.To = recipients[0];
                 newEmail.CC = recipients[1];
                 newEmail.BCC = recipients[2];
-
                 newEmail.Subject = subject;
                 newEmail.Importance = importance;
-                newEmail.Recipients.ResolveAll();
+
+                string from = StaticHelper.GetFromAccount(idParts[0]);
+                if (!string.IsNullOrEmpty(from))
+                {
+                    // Retrieve the account that has the specific SMTP address.
+                    Account account = GetAccountForEmailAddress(outlookApp, from);
+                    if (account != null)
+                    {
+                        // Use this account to send the e-mail.
+                        newEmail.SendUsingAccount = account;
+                    }
+                }
+                
                 newEmail.Display();
             }
             catch (System.Exception ex)
@@ -198,7 +209,19 @@ namespace Outlook2010CV
 
                 newMeeting.Subject = subject;
                 newMeeting.Importance = importance;
-                newMeeting.Recipients.ResolveAll();
+
+                string from = StaticHelper.GetFromAccount(idParts[0]);
+                if (!string.IsNullOrEmpty(from))
+                {
+                    // Retrieve the account that has the specific SMTP address.
+                    Account account = GetAccountForEmailAddress(outlookApp, from);
+                    if (account != null)
+                    {
+                        // Use this account to send the e-mail.
+                        newMeeting.SendUsingAccount = account;
+                    }
+                }
+
                 newMeeting.Display();
             }
             catch (System.Exception ex)
@@ -206,6 +229,23 @@ namespace Outlook2010CV
                 StaticHelper.LogMessage(MessageType.Error, ex.ToString());
                 throw;
             }
+        }
+
+        private static Account GetAccountForEmailAddress(Application application, string smtpAddress)
+        {
+            // Loop over the Accounts collection of the current Outlook session.
+            Accounts accounts = application.Session.Accounts;
+            foreach (Account account in accounts)
+            {
+                // When the e-mail address matches, return the account.
+                if (account.SmtpAddress == smtpAddress)
+                {
+                    return account;
+                }
+            }
+
+            StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InstalledUICulture, "No Account with SmtpAddress: {0} exists!", smtpAddress));
+            return null;
         }
     }
 }

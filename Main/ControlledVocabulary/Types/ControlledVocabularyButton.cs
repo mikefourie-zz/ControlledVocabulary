@@ -23,7 +23,9 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
 public partial class ButtonConfiguration {
-    
+
+    private string fromField;
+
     private string toRecipientsField;
     
     private string ccRecipientsField;
@@ -35,7 +37,21 @@ public partial class ButtonConfiguration {
     private string guidanceUrlField;
     
     private string authorField;
-    
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string from
+    {
+        get
+        {
+            return this.fromField;
+        }
+        set
+        {
+            this.fromField = value;
+        }
+    }
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
     public string toRecipients {

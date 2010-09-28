@@ -33,6 +33,19 @@ namespace Outlook2007CV
                 newEmail.BCC = recipients[2];
                 newEmail.Subject = subject;
                 newEmail.Importance = importance;
+
+                string from = StaticHelper.GetFromAccount(idParts[0]);
+                if (!string.IsNullOrEmpty(from))
+                {
+                    // Retrieve the account that has the specific SMTP address.
+                    Account account = GetAccountForEmailAddress(outlookApp, from);
+                    if (account != null)
+                    {
+                        // Use this account to send the e-mail.
+                        newEmail.SendUsingAccount = account;
+                    }
+                }
+
                 newEmail.Display(true);
             }
             catch (System.Exception ex)
@@ -40,6 +53,23 @@ namespace Outlook2007CV
                 StaticHelper.LogMessage(MessageType.Error, ex.ToString());
                 throw;
             }
+        }
+
+        private static Account GetAccountForEmailAddress(Application application, string smtpAddress)
+        {
+            // Loop over the Accounts collection of the current Outlook session.
+            Accounts accounts = application.Session.Accounts;
+            foreach (Account account in accounts)
+            {
+                // When the e-mail address matches, return the account.
+                if (account.SmtpAddress == smtpAddress)
+                {
+                    return account;
+                }
+            }
+
+            StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InstalledUICulture, "No Account with SmtpAddress: {0} exists!", smtpAddress));
+            return null;
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)

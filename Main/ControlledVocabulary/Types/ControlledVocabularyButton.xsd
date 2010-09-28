@@ -3,6 +3,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="ButtonConfiguration">
     <xs:complexType>
+      <xs:attribute name="from" type="xs:string"/>
       <xs:attribute name="toRecipients" type="xs:string"/>
       <xs:attribute name="ccRecipients" type="xs:string"/>
       <xs:attribute name="bccRecipients" type="xs:string"/>

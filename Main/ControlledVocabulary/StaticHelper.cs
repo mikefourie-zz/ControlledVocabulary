@@ -201,6 +201,22 @@ namespace ControlledVocabulary
             return recipients;
         }
 
+        public static string GetFromAccount(string buttonId)
+        {
+            // Get the installation path
+            DirectoryInfo installationPath = GetInstallationPath();
+            XmlSerializer deserializer = new XmlSerializer(typeof(ButtonConfiguration));
+
+            ButtonConfiguration buttonConfig;
+            FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Buttons\" + buttonId + @"\config.xml"));
+            using (FileStream buttonStream = new FileStream(f.FullName, FileMode.Open, FileAccess.Read))
+            {
+                buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
+            }
+
+            return buttonConfig.from;
+        }
+
         public static string GetGuidanceUrl(string buttonId)
         {
             // Get the installation path

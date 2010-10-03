@@ -7,25 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{90AB78
 		Common\ControlledVocabulary.ruleset = Common\ControlledVocabulary.ruleset
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Addins", "Addins", "{0F14A86A-0F7A-4066-899A-E581EBF446D1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{96119340-C0A1-445E-8942-CF97B0949CE1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlledVocabulary", "ControlledVocabulary\ControlledVocabulary.csproj", "{A0943160-E0BD-452E-B9C9-6B9D40B7C4CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outlook2010CV", "Addins\Outlook2010CV\Outlook2010CV.csproj", "{8582DA15-2292-4816-990B-3BF2F28E1C74}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Outlook2010CV", "Installers\Outlook2010CV\Outlook2010CV.vdproj", "{30606324-AC3F-4702-A63C-075E538F9277}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outlook2007CV", "Addins\Outlook2007CV\Outlook2007CV.csproj", "{339AEA64-ED0F-42E6-90AD-2E45F346EF83}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Outlook2007CV", "Installers\Outlook2007CV\Outlook2007CV.vdproj", "{54D0FCA7-080D-4CF9-B748-5D684891B534}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OutlookInstaller", "Installers\Outlook2010CV\Outlook2010CV.vdproj", "{30606324-AC3F-4702-A63C-075E538F9277}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsClient", "WindowsClient\WindowsClient.csproj", "{72CDB3E5-A628-4C27-9FED-482BBD21509D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientInstaller", "ClientInstaller\ClientInstaller.vdproj", "{7B870082-66D6-4463-846B-6BBCF4D31C69}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 6
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs05
 		SccLocalPath0 = .
@@ -33,24 +29,19 @@ Global
 		SccProjectName1 = ControlledVocabulary
 		SccLocalPath1 = ControlledVocabulary
 		SccProjectUniqueName2 = Addins\\Outlook2010CV\\Outlook2010CV.csproj
-		SccProjectTopLevelParentUniqueName2 = Main.sln
 		SccProjectName2 = Addins/Outlook2010CV
 		SccLocalPath2 = Addins\\Outlook2010CV
 		SccProjectUniqueName3 = Installers\\Outlook2010CV\\Outlook2010CV.vdproj
 		SccProjectTopLevelParentUniqueName3 = Main.sln
 		SccProjectName3 = Installers/Outlook2010CV
 		SccLocalPath3 = Installers\\Outlook2010CV
-		SccProjectUniqueName4 = Addins\\Outlook2007CV\\Outlook2007CV.csproj
-		SccProjectTopLevelParentUniqueName4 = Main.sln
-		SccProjectName4 = Addins/Outlook2007CV
-		SccLocalPath4 = Addins\\Outlook2007CV
-		SccProjectUniqueName5 = Installers\\Outlook2007CV\\Outlook2007CV.vdproj
+		SccProjectUniqueName4 = WindowsClient\\WindowsClient.csproj
+		SccProjectName4 = WindowsClient
+		SccLocalPath4 = WindowsClient
+		SccProjectUniqueName5 = ClientInstaller\\ClientInstaller.vdproj
 		SccProjectTopLevelParentUniqueName5 = Main.sln
-		SccProjectName5 = Installers/Outlook2007CV
-		SccLocalPath5 = Installers\\Outlook2007CV
-		SccProjectUniqueName6 = WindowsClient\\WindowsClient.csproj
-		SccProjectName6 = WindowsClient
-		SccLocalPath6 = WindowsClient
+		SccProjectName5 = ClientInstaller
+		SccLocalPath5 = ClientInstaller
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,22 +82,6 @@ Global
 		{30606324-AC3F-4702-A63C-075E538F9277}.Release|Mixed Platforms.Build.0 = Release
 		{30606324-AC3F-4702-A63C-075E538F9277}.Release|x86.ActiveCfg = Release
 		{30606324-AC3F-4702-A63C-075E538F9277}.Release|x86.Build.0 = Release
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83}.Release|x86.ActiveCfg = Release|Any CPU
-		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Debug|Any CPU.ActiveCfg = Debug
-		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Debug|x86.ActiveCfg = Debug
-		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Release|Any CPU.ActiveCfg = Release
-		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Release|Any CPU.Build.0 = Release
-		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Release|Mixed Platforms.ActiveCfg = Release
-		{54D0FCA7-080D-4CF9-B748-5D684891B534}.Release|x86.ActiveCfg = Release
 		{72CDB3E5-A628-4C27-9FED-482BBD21509D}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{72CDB3E5-A628-4C27-9FED-482BBD21509D}.Debug|Any CPU.Build.0 = Debug|x86
 		{72CDB3E5-A628-4C27-9FED-482BBD21509D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
@@ -119,14 +94,19 @@ Global
 		{72CDB3E5-A628-4C27-9FED-482BBD21509D}.Release|Mixed Platforms.Build.0 = Release|x86
 		{72CDB3E5-A628-4C27-9FED-482BBD21509D}.Release|x86.ActiveCfg = Release|x86
 		{72CDB3E5-A628-4C27-9FED-482BBD21509D}.Release|x86.Build.0 = Release|x86
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Debug|Any CPU.ActiveCfg = Debug
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Debug|x86.ActiveCfg = Debug
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|Any CPU.ActiveCfg = Release
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|Any CPU.Build.0 = Release
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|Mixed Platforms.ActiveCfg = Release
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8582DA15-2292-4816-990B-3BF2F28E1C74} = {0F14A86A-0F7A-4066-899A-E581EBF446D1}
-		{339AEA64-ED0F-42E6-90AD-2E45F346EF83} = {0F14A86A-0F7A-4066-899A-E581EBF446D1}
 		{30606324-AC3F-4702-A63C-075E538F9277} = {96119340-C0A1-445E-8942-CF97B0949CE1}
-		{54D0FCA7-080D-4CF9-B748-5D684891B534} = {96119340-C0A1-445E-8942-CF97B0949CE1}
+		{7B870082-66D6-4463-846B-6BBCF4D31C69} = {96119340-C0A1-445E-8942-CF97B0949CE1}
 	EndGlobalSection
 EndGlobal

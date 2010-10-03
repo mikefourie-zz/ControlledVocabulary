@@ -1,8 +1,11 @@
-﻿//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+﻿//--------------------------------------------------------------------------------------------------------------------------------
 // <copyright file="WpfExtensions.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {
+    /// <summary>
+    /// WpfExtensions
+    /// </summary>
     public static class WpfExtensions
     {
         public static System.Windows.Forms.IWin32Window GetIWin32Window(this System.Windows.Media.Visual visual)

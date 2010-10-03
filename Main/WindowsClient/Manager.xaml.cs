@@ -1,5 +1,5 @@
-﻿//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+﻿//--------------------------------------------------------------------------------------------------------------------------------
+// <copyright file="Manager.xaml.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {
@@ -15,9 +15,9 @@ namespace ControlledVocabulary
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class Manager
     {
-        public MainWindow()
+        public Manager()
         {
             InitializeComponent();
         }
@@ -80,16 +80,6 @@ namespace ControlledVocabulary
         private void labelAppData_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Process.Start(this.labelAppData.Content.ToString());
-        }
-
-        private void labelCodePlex_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(@"http://controlledvocabulary.codeplex.com");
-        }
-
-        private void labelBlog_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(@"http://www.freetodev.com");
         }
 
         private void buttonRemove_Click(object sender, RoutedEventArgs e)

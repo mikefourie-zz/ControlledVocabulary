@@ -17,7 +17,7 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OutlookInstaller", "Install
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsClient", "WindowsClient\WindowsClient.csproj", "{72CDB3E5-A628-4C27-9FED-482BBD21509D}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientInstaller", "ClientInstaller\ClientInstaller.vdproj", "{7B870082-66D6-4463-846B-6BBCF4D31C69}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientInstaller", "Installers\ClientInstaller\ClientInstaller.vdproj", "{7B870082-66D6-4463-846B-6BBCF4D31C69}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -38,10 +38,10 @@ Global
 		SccProjectUniqueName4 = WindowsClient\\WindowsClient.csproj
 		SccProjectName4 = WindowsClient
 		SccLocalPath4 = WindowsClient
-		SccProjectUniqueName5 = ClientInstaller\\ClientInstaller.vdproj
+		SccProjectUniqueName5 = Installers\\ClientInstaller\\ClientInstaller.vdproj
 		SccProjectTopLevelParentUniqueName5 = Main.sln
-		SccProjectName5 = ClientInstaller
-		SccLocalPath5 = ClientInstaller
+		SccProjectName5 = Installers/ClientInstaller
+		SccLocalPath5 = Installers\\ClientInstaller
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -207,7 +207,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_8B453627B0804F42B4DAF7CAC55321F3"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder]Controlled Vocabulary"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -288,15 +288,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary (Client)"
-        "ProductCode" = "8:{5108D9E8-17C0-4626-BCE0-92706D010EC5}"
-        "PackageCode" = "8:{44750005-F544-4EA9-B183-670E16A32A0C}"
+        "ProductCode" = "8:{868E203A-9AA0-484F-BED2-92CF1FCD0F60}"
+        "PackageCode" = "8:{728039BF-A668-4024-9F16-AF595EBDC6E9}"
         "UpgradeCode" = "8:{7C6FE84F-3D0F-4215-9D9A-113ADD009DDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.12"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

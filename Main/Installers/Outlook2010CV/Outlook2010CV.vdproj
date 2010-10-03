@@ -52,13 +52,13 @@
         "Entry"
         {
         "MsmKey" = "8:_316EDD0760F04D71F791FC371C198915"
-        "OwnerKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
+        "OwnerKey" = "8:_1F860E82F710448AA02631F9570651A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_316EDD0760F04D71F791FC371C198915"
-        "OwnerKey" = "8:_1F860E82F710448AA02631F9570651A7"
+        "OwnerKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,12 +190,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1F860E82F710448AA02631F9570651A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_63ECCD6561D321F43FAC25656285B8AF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -203,12 +197,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_316EDD0760F04D71F791FC371C198915"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -251,6 +239,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_54405EE9FE8DB722F123C18BC771F07A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1F860E82F710448AA02631F9570651A7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_316EDD0760F04D71F791FC371C198915"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -841,15 +841,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary (Outlook 2010)"
-        "ProductCode" = "8:{4068D9A3-BF7F-4D32-95AF-6384DA480B05}"
-        "PackageCode" = "8:{B3899D80-12BC-43F5-9662-BEB6D5A34755}"
+        "ProductCode" = "8:{9756954B-8DA2-436B-AD82-3B073F40C65F}"
+        "PackageCode" = "8:{96D45693-F3AE-4C3E-9EAB-CC296CF1ED41}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.12"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

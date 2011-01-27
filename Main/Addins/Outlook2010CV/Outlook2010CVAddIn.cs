@@ -195,16 +195,22 @@ namespace Outlook2010CV
 
                 // Get the recipients
                 string[] recipients = StaticHelper.GetRecipients(idParts[0], control.Id);
-                if (!string.IsNullOrEmpty(recipients[1]))
+                if (!string.IsNullOrEmpty(recipients[0]))
                 {
-                    Recipient recipRequired = newMeeting.Recipients.Add(recipients[0]);
-                    recipRequired.Type = (int)OlMeetingRecipientType.olRequired;
+                    foreach (string s in recipients[0].Split(new[] { ';' }))
+                    {
+                        Recipient recipRequired = newMeeting.Recipients.Add(s);
+                        recipRequired.Type = (int)OlMeetingRecipientType.olRequired;
+                    }
                 }
 
                 if (!string.IsNullOrEmpty(recipients[1]))
                 {
-                    Recipient recipOptional = newMeeting.Recipients.Add(recipients[1]);
-                    recipOptional.Type = (int)OlMeetingRecipientType.olOptional;
+                    foreach (string s in recipients[1].Split(new[] { ';' }))
+                    {
+                        Recipient recipOptional = newMeeting.Recipients.Add(s);
+                        recipOptional.Type = (int)OlMeetingRecipientType.olOptional;
+                    }
                 }
 
                 newMeeting.Subject = subject;

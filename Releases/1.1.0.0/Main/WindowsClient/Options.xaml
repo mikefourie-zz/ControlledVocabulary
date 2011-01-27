@@ -1,0 +1,9 @@
+﻿<Window x:Class="ControlledVocabulary.Options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Controlled Vocabulary Windows Client Options" Height="154" Width="325" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow" Loaded="Window_Loaded">
+    <Grid>
+        <CheckBox Content="Copy Subject to clipboard" Height="16" HorizontalAlignment="Left" Margin="12,12,0,0" Name="checkBoxCopySubject" VerticalAlignment="Top" Checked="checkBoxCopySubject_Checked" IsThreeState="False" />
+        <CheckBox Content="Call mailto: protocol" Height="16" HorizontalAlignment="Left" Margin="12,34,0,0" Name="checkBoxCallMailto" VerticalAlignment="Top" IsChecked="True" Checked="checkBoxCallMailto_Checked" />
+    </Grid>
+</Window>

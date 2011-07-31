@@ -5,11 +5,11 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Controlled Vocabulary on CodePlex")]
+[assembly: AssemblyCompany("Mike Fourie")]
 [assembly: AssemblyProduct("Controlled Vocabulary")]
 [assembly: AssemblyCopyright("Copyright © Controlled Vocabulary on CodePlex")]
 [assembly: AssemblyTrademark("Mike Fourie")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.1.1.0")]
+[assembly: AssemblyVersion("1.5.0.0")]
+[assembly: AssemblyFileVersion("1.5.0.0")]

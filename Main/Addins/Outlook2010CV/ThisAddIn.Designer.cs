@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 #pragma warning disable 414
-namespace Outlook2010CV {
+namespace ControlledVocabulary.Outook {
     
     
     /// 

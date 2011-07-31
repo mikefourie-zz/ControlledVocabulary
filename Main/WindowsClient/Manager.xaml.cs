@@ -4,22 +4,47 @@
 namespace ControlledVocabulary
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Windows;
     using System.Windows.Forms;
     using System.Windows.Input;
+    using System.Xml;
     using Microsoft.VisualBasic.FileIO;
+    using MessageBox = System.Windows.Forms.MessageBox;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class Manager
     {
+        private readonly bool initializing = true;
+        private readonly List<CheckedListBoxItem> checkedListItems = new List<CheckedListBoxItem>();
+        private XmlDocument xdoc;
+
+        /// <summary>
+        /// Initializes a new instance of the Manager class
+        /// </summary>
         public Manager()
         {
             InitializeComponent();
+            this.checkBoxAutoUpdate.IsChecked = Convert.ToBoolean(StaticHelper.GetApplicationSetting("AutoUpdate"));
+            this.initializing = false;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the Manager class
+        /// </summary>
+        /// <param name="cvcfPath">cvcfPath</param>
+        public Manager(string cvcfPath)
+        {
+            InitializeComponent();
+            this.textBoxDiscover.Text = cvcfPath;
+            this.DiscoverConfig();
+            this.initializing = false;
         }
 
         private static void CopyAll(DirectoryInfo source, DirectoryInfo target)
@@ -54,12 +79,18 @@ namespace ControlledVocabulary
             try
             {
                 Process[] processes = Process.GetProcessesByName("OUTLOOK");
-                this.labelOutookRunning.Visibility = processes.Length > 0 ? System.Windows.Visibility.Visible : System.Windows.Visibility.Hidden;
+                if (processes.Length > 0)
+                {
+                    this.labelOutlookRunning.Visibility = System.Windows.Visibility.Visible;
+                }
             }
             catch
             {
                 // Do Nothing
             }
+
+            this.checkBoxCallMailto.IsChecked = Convert.ToBoolean(StaticHelper.GetApplicationSetting("CallMailtoProtocol"));
+            this.checkBoxCopySubject.IsChecked = Convert.ToBoolean(StaticHelper.GetApplicationSetting("CopySubjectToClipboard"));
         }
 
         private void GetButtons()
@@ -88,22 +119,102 @@ namespace ControlledVocabulary
             {
                 if (Directory.Exists(this.labelAppData.Content + @"\Buttons\" + this.listBoxButtons.SelectedValue))
                 {
-                    Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(this.labelAppData.Content + @"\Buttons\" + this.listBoxButtons.SelectedValue, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                    this.GetButtons();
+                    if (MessageBox.Show("Would you like to delete " + this.listBoxButtons.SelectedItem + "?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(this.labelAppData.Content + @"\Buttons\" + this.listBoxButtons.SelectedValue, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                        this.GetButtons();
+                    }
                 }
             }
         }
 
-        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+        private void buttonDiscover_Click_1(object sender, RoutedEventArgs e)
         {
-            var dlg = new FolderBrowserDialog { Description = "Choose a button Folder" };
-            if (dlg.ShowDialog(this.GetIWin32Window()) == System.Windows.Forms.DialogResult.OK)
+            this.DiscoverConfig();
+        }
+
+        private void DiscoverConfig()
+        {
+            if (!string.IsNullOrEmpty(this.textBoxDiscover.Text))
             {
-                DirectoryInfo source = new DirectoryInfo(dlg.SelectedPath);
-                DirectoryInfo destination = new DirectoryInfo(this.labelAppData.Content + @"\Buttons\" + source.Name);
-                CopyAll(source, destination);
-                this.GetButtons();
+                this.listboxDiscovered.ItemsSource = null;
+                this.listboxDiscovered.Items.Clear();
+                this.checkedListItems.Clear();
+
+                try
+                {
+                    this.xdoc = new XmlDocument();
+                    this.xdoc.Load(this.textBoxDiscover.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Discovery Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                XmlNodeList buttons = this.xdoc.SelectNodes("/cvcf/button");
+                if (buttons != null)
+                {
+                    foreach (CheckedListBoxItem item in from XmlNode buttonNode in buttons select new CheckedListBoxItem { Name = buttonNode.Attributes["name"].Value, IsChecked = true, SourcePath = buttonNode.Attributes["sourcePath"].Value })
+                    {
+                        this.checkedListItems.Add(item);
+                    }
+                }
+
+                this.listboxDiscovered.ItemsSource = this.checkedListItems;
             }
+            else
+            {
+                MessageBox.Show("Please enter a file path or URL", "Data Required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void buttonAddDiscovered_Click_1(object sender, RoutedEventArgs e)
+        {
+            foreach (CheckedListBoxItem item in this.checkedListItems)
+            {
+                if (item.IsChecked)
+                {
+                    StaticHelper.DeployZippedButton(item.SourcePath, item.Name);
+                }
+            }
+
+            this.GetButtons();
+        }
+
+        private void buttonCheckForUpdates_Click(object sender, RoutedEventArgs e)
+        {
+            StaticHelper.CheckForMenuXmlUpdates();
+        }
+
+        private void checkBoxAutoUpdate_Checked(object sender, RoutedEventArgs e)
+        {
+            StaticHelper.SetApplicationSetting("AutoUpdate", this.checkBoxAutoUpdate.IsChecked.ToString());
+        }
+
+        private void checkBoxAutoUpdate_Unchecked(object sender, RoutedEventArgs e)
+        {
+            StaticHelper.SetApplicationSetting("AutoUpdate", this.checkBoxAutoUpdate.IsChecked.ToString());
+        }
+
+        private void checkBoxCallMailto_Unchecked(object sender, RoutedEventArgs e)
+        {
+            StaticHelper.SetApplicationSetting("CallMailtoProtocol", this.checkBoxCallMailto.IsChecked.ToString());
+        }
+
+        private void checkBoxCallMailto_Checked(object sender, RoutedEventArgs e)
+        {
+            StaticHelper.SetApplicationSetting("CallMailtoProtocol", this.checkBoxCallMailto.IsChecked.ToString());
+        }
+
+        private void checkBoxCopySubject_Unchecked(object sender, RoutedEventArgs e)
+        {
+            StaticHelper.SetApplicationSetting("CopySubjectToClipboard", this.checkBoxCopySubject.IsChecked.ToString());
+        }
+
+        private void checkBoxCopySubject_Checked(object sender, RoutedEventArgs e)
+        {
+            StaticHelper.SetApplicationSetting("CopySubjectToClipboard", this.checkBoxCopySubject.IsChecked.ToString());
         }
     }
 }

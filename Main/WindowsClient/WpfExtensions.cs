@@ -8,6 +8,11 @@ namespace ControlledVocabulary
     /// </summary>
     public static class WpfExtensions
     {
+        /// <summary>
+        /// GetIWin32Window
+        /// </summary>
+        /// <param name="visual">System.Windows.Media.Visual</param>
+        /// <returns>IWin32Window</returns>
         public static System.Windows.Forms.IWin32Window GetIWin32Window(this System.Windows.Media.Visual visual)
         {
             var source = System.Windows.PresentationSource.FromVisual(visual) as System.Windows.Interop.HwndSource;

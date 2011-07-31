@@ -37,6 +37,12 @@ namespace ControlledVocabulary
             System.Diagnostics.Process.Start(guidanceUrl);
         }
 
+        private static void Launch(object sender, RoutedEventArgs e)
+        {
+            MenuItem m = (MenuItem)sender;
+            System.Diagnostics.Process.Start(m.Tag.ToString());
+        }
+
         private static void Send(object sender, RoutedEventArgs e)
         {
             MenuItem m = (MenuItem)sender;
@@ -59,13 +65,13 @@ namespace ControlledVocabulary
                 {
                     mailto += "&bcc=" + recipients[2];
                 }
-                
-                if (Settings.Default.CopyToClipboard)
+
+                if (Convert.ToBoolean(StaticHelper.GetApplicationSetting("CopySubjectToClipboard")))
                 {
                     Clipboard.SetText(m.Tag.ToString());
                 }
 
-                if (Settings.Default.CallMailTo)
+                if (Convert.ToBoolean(StaticHelper.GetApplicationSetting("CallMailtoProtocol")))
                 {
                     Process.Start(mailto);
                 }
@@ -79,6 +85,24 @@ namespace ControlledVocabulary
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // check for updates
+            if (Convert.ToBoolean(StaticHelper.GetApplicationSetting("AutoUpdate")))
+            {
+                if (string.IsNullOrEmpty(StaticHelper.GetApplicationSetting("LastUpdateCheckDate")))
+                {
+                    StaticHelper.CheckForMenuXmlUpdates();
+                }
+                else
+                {
+                    DateTime lastcheck = Convert.ToDateTime(StaticHelper.GetApplicationSetting("LastUpdateCheckDate"));
+                    TimeSpan t = DateTime.Now - lastcheck;
+                    if (t.Days >= Convert.ToInt32(StaticHelper.GetApplicationSetting("UpdateCheckFrequency")))
+                    {
+                        StaticHelper.CheckForMenuXmlUpdates();
+                    }
+                }
+            }
+
             // get the buttons
             StaticHelper.LogMessage(MessageType.Info, "Getting buttons");
             menu[] buttons = StaticHelper.GetControlledVocabularyMenus();
@@ -90,6 +114,7 @@ namespace ControlledVocabulary
 
         private void BuildMenu(IEnumerable<menu> buttons)
         {
+            this.menu1.Items.Clear();
             foreach (menu customButton in buttons)
             {
                 MenuItem newMenuItem = new MenuItem { Header = customButton.label };
@@ -108,6 +133,9 @@ namespace ControlledVocabulary
                                 break;
                             case "Guidance":
                                 submenu.Click += Guidance;
+                                break;
+                            case "Launch":
+                                submenu.Click += Launch;
                                 break;
                             default:
                                 submenu.IsEnabled = false;
@@ -137,6 +165,9 @@ namespace ControlledVocabulary
                                     case "Guidance":
                                         subsmenu.Click += Guidance;
                                         break;
+                                    case "Launch":
+                                        subsmenu.Click += Launch;
+                                        break;
                                     default:
                                         subsmenu.IsEnabled = false;
                                         break;
@@ -162,14 +193,9 @@ namespace ControlledVocabulary
             }
         }
 
-        private void labelCodePlex_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start(@"http://controlledvocabulary.codeplex.com");
-        }
-
         private void labelBlog_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Process.Start(@"http://www.freetodev.com");
+            Process.Start(@"http://mikefourie.wordpress.com");
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -179,16 +205,24 @@ namespace ControlledVocabulary
             Settings.Default.Save();
         }
 
-        private void labelOptions_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Options optionsWindow = new Options();
-            optionsWindow.ShowDialog();
-        }
-
         private void labelManager_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Manager managerWindow = new Manager();
             managerWindow.ShowDialog();
+            StaticHelper.LogMessage(MessageType.Info, "Building menu");
+
+            // get the buttons
+            StaticHelper.LogMessage(MessageType.Info, "Getting buttons");
+            menu[] buttons = StaticHelper.GetControlledVocabularyMenus();
+
+            // build the buttons
+            StaticHelper.LogMessage(MessageType.Info, "Building menu");
+            this.BuildMenu(buttons);
+        }
+
+        private void labelCodePlex_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(@"http://controlledvocabulary.codeplex.com");
         }
     }
 }

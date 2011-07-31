@@ -5,8 +5,8 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("ControlledVocabulary")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Controlled Vocabulary")]
+[assembly: AssemblyDescription("Controlled Vocabulary")]
 [assembly: CLSCompliant(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM

@@ -1,7 +1,7 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
 // <copyright file="Outlook2010CVAddIn.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
-namespace Outlook2010CV
+namespace ControlledVocabulary.Outook
 {
     using System;
     using System.Drawing;
@@ -44,8 +44,23 @@ namespace Outlook2010CV
                     return this.cachedRibbon;
                 }
 
-                StaticHelper.LogMessage(MessageType.Info, "Checking for Updates");
-                StaticHelper.CheckForUpdates();
+                // check for updates
+                if (Convert.ToBoolean(StaticHelper.GetApplicationSetting("AutoUpdate")))
+                {
+                    if (string.IsNullOrEmpty(StaticHelper.GetApplicationSetting("LastUpdateCheckDate")))
+                    {
+                        StaticHelper.CheckForMenuXmlUpdates();
+                    }
+                    else
+                    {
+                        DateTime lastcheck = Convert.ToDateTime(StaticHelper.GetApplicationSetting("LastUpdateCheckDate"));
+                        TimeSpan t = DateTime.Now - lastcheck;
+                        if (t.Days >= Convert.ToInt32(StaticHelper.GetApplicationSetting("UpdateCheckFrequency")))
+                        {
+                            StaticHelper.CheckForMenuXmlUpdates();
+                        }
+                    }
+                }
 
                 // Get the installation path
                 DirectoryInfo installationPath = StaticHelper.GetInstallationPath();
@@ -117,6 +132,11 @@ namespace Outlook2010CV
             System.Diagnostics.Process.Start(guidanceUrl);
         }
 
+        public void Launch(IRibbonControl control)
+        {
+            System.Diagnostics.Process.Start(control.Tag);
+        }
+
         public void SendNormal(IRibbonControl control)
         {
             this.Send(control, control.Tag, OlImportance.olImportanceNormal);
@@ -159,8 +179,46 @@ namespace Outlook2010CV
                         newEmail.SendUsingAccount = account;
                     }
                 }
-                
-                newEmail.Display();
+
+                if (control.Context is Inspector)
+                {
+                    Inspector inspector = (Inspector)control.Context;
+                    if (inspector.CurrentItem is MailItem)
+                    {
+                        MailItem m = inspector.CurrentItem as MailItem;
+                        m.To = newEmail.To;
+                        m.CC = newEmail.CC;
+                        m.BCC = newEmail.BCC;
+                        m.Importance = newEmail.Importance;
+
+                        // Retrieve the account that has the specific SMTP address.
+                        Account account = GetAccountForEmailAddress(outlookApp, from);
+                        if (account != null)
+                        {
+                            // Use this account to send the e-mail.
+                            m.SendUsingAccount = account;
+                        }
+
+                        if (string.IsNullOrEmpty(m.Subject))
+                        {
+                            m.Subject = newEmail.Subject;
+                        }
+                        else
+                        {
+                            string standardSuffix = StaticHelper.GetStandardSuffix(idParts[0]);
+                            if (!string.IsNullOrEmpty(standardSuffix))
+                            {
+                                newEmail.Subject = newEmail.Subject.Replace(standardSuffix, string.Empty);
+                            }
+
+                            m.Subject = newEmail.Subject + m.Subject;
+                        }
+                    }
+                }
+                else
+                {
+                    newEmail.Display();
+                }
             }
             catch (System.Exception ex)
             {
@@ -197,18 +255,16 @@ namespace Outlook2010CV
                 string[] recipients = StaticHelper.GetRecipients(idParts[0], control.Id);
                 if (!string.IsNullOrEmpty(recipients[0]))
                 {
-                    foreach (string s in recipients[0].Split(new[] { ';' }))
+                    foreach (Recipient recipRequired in recipients[0].Split(new[] { ';' }).Select(s => newMeeting.Recipients.Add(s)))
                     {
-                        Recipient recipRequired = newMeeting.Recipients.Add(s);
                         recipRequired.Type = (int)OlMeetingRecipientType.olRequired;
                     }
                 }
 
                 if (!string.IsNullOrEmpty(recipients[1]))
                 {
-                    foreach (string s in recipients[1].Split(new[] { ';' }))
+                    foreach (Recipient recipOptional in recipients[1].Split(new[] { ';' }).Select(s => newMeeting.Recipients.Add(s)))
                     {
-                        Recipient recipOptional = newMeeting.Recipients.Add(s);
                         recipOptional.Type = (int)OlMeetingRecipientType.olOptional;
                     }
                 }
@@ -241,16 +297,12 @@ namespace Outlook2010CV
         {
             // Loop over the Accounts collection of the current Outlook session.
             Accounts accounts = application.Session.Accounts;
-            foreach (Account account in accounts)
+            foreach (Account account in accounts.Cast<Account>().Where(account => account.SmtpAddress == smtpAddress))
             {
-                // When the e-mail address matches, return the account.
-                if (account.SmtpAddress == smtpAddress)
-                {
-                    return account;
-                }
+                return account;
             }
 
-            StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InstalledUICulture, "No Account with SmtpAddress: {0} exists!", smtpAddress));
+            StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InstalledUICulture, "No Account with SmtpAddress: {0} exists.", smtpAddress));
             return null;
         }
     }

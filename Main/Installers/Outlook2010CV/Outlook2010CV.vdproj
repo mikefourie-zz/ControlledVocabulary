@@ -21,8 +21,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_10702279D8654BF3A72EBDD43BC08143"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_096464B31EA7F2187946EE0799437E66"
+        "OwnerKey" = "8:_1F860E82F710448AA02631F9570651A7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_096464B31EA7F2187946EE0799437E66"
+        "OwnerKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -105,6 +111,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_72C7D0B5315342E08B1F4EFCA8B5CE2D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_78DB6874AEFBDDC2293C8837BCC3EFC8"
         "OwnerKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
         "MsmSig" = "8:_UNDEFINED"
@@ -165,7 +177,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CF82579B492F4009B617DE5ECA494061"
+        "MsmKey" = "8:_CD8F491D02F4439FB5CD06E9BC62B9B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E70E1771F9D84D76A96A80757297C3A1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -173,6 +191,30 @@
         {
         "MsmKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EF7AA312DC3E142693BB42538D71534C"
+        "OwnerKey" = "8:_096464B31EA7F2187946EE0799437E66"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EF7AA312DC3E142693BB42538D71534C"
+        "OwnerKey" = "8:_ED12BFC14EEA4F5398085A3340DEECF2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EF7AA312DC3E142693BB42538D71534C"
+        "OwnerKey" = "8:_55CEE453FE944B36AB4C8AA8F3D57E35"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EF7AA312DC3E142693BB42538D71534C"
+        "OwnerKey" = "8:_1F860E82F710448AA02631F9570651A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -263,6 +305,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1F860E82F710448AA02631F9570651A7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_096464B31EA7F2187946EE0799437E66"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EF7AA312DC3E142693BB42538D71534C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -414,10 +468,21 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_10702279D8654BF3A72EBDD43BC08143"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_096464B31EA7F2187946EE0799437E66"
             {
-            "SourcePath" = "8:..\\..\\BuildBinaries\\Outlook2010CV.dll.manifest"
-            "TargetName" = "8:Outlook2010CV.dll.manifest"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_096464B31EA7F2187946EE0799437E66"
+                    {
+                    "Name" = "8:ControlledVocabulary.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ControlledVocabulary.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
             "Condition" = "8:"
@@ -430,8 +495,8 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_366F48CB89CE3F565FCDA736F006EAE7"
@@ -527,9 +592,29 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_72C7D0B5315342E08B1F4EFCA8B5CE2D"
+            {
+            "SourcePath" = "8:..\\..\\BuildBinaries\\ControlledVocabulary.Outook.vsto"
+            "TargetName" = "8:ControlledVocabulary.Outook.vsto"
+            "Tag" = "8:"
+            "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78DB6874AEFBDDC2293C8837BCC3EFC8"
             {
-            "AssemblyRegister" = "3:3"
+            "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Common.v9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
@@ -702,10 +787,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF82579B492F4009B617DE5ECA494061"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD8F491D02F4439FB5CD06E9BC62B9B1"
             {
-            "SourcePath" = "8:..\\..\\BuildBinaries\\Outlook2010CV.vsto"
-            "TargetName" = "8:Outlook2010CV.vsto"
+            "SourcePath" = "8:..\\..\\BuildBinaries\\ControlledVocabulary.Outook.dll.manifest"
+            "TargetName" = "8:ControlledVocabulary.Outook.dll.manifest"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
             "Condition" = "8:"
@@ -720,6 +805,57 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E70E1771F9D84D76A96A80757297C3A1"
+            {
+            "SourcePath" = "8:..\\..\\Common\\settings.xml"
+            "TargetName" = "8:settings.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_B7969230155249B19DBF78790AE8A834"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EF7AA312DC3E142693BB42538D71534C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EF7AA312DC3E142693BB42538D71534C"
+                    {
+                    "Name" = "8:Ionic.Zip.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Ionic.Zip.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FAFB8E25DCF4D25C2707A44A91AD1007"
@@ -756,6 +892,29 @@
         }
         "FileType"
         {
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_32411566A2174A52ACEE75B50EA69448"
+            {
+            "Name" = "8:Controlled Vocabulary Configuration File"
+            "Description" = "8:Controlled Vocabulary Configuration File"
+            "Extensions" = "8:cvcf"
+            "MIME" = "8:"
+            "Icon" = "8:_841260653D774A0ABC7E8F37F2189564"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_1F860E82F710448AA02631F9570651A7"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_3A5A2BDD97F24F50987A1E590EB1EFDA"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
         }
         "Folder"
         {
@@ -829,7 +988,7 @@
             {
             "DefaultLocation" = "8:[ProgramFilesFolder]Controlled Vocabulary"
             "Name" = "8:#1925"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:TARGETDIR"
@@ -852,25 +1011,25 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Controlled Vocabulary (Outlook 2010)"
-        "ProductCode" = "8:{F9252232-2D7B-43BD-AEE6-7A774B403115}"
-        "PackageCode" = "8:{A963BF7F-B3B4-4243-9F98-6772B009461D}"
+        "ProductName" = "8:Controlled Vocabulary 1.5 for Outlook 2010"
+        "ProductCode" = "8:{81A55F32-7E92-4F61-A17A-766DDF2EFE8C}"
+        "PackageCode" = "8:{C6035C32-DB8B-4079-8DED-A7330251947F}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.1"
-        "Manufacturer" = "8:Controlled Vocabulary (CodePlex)"
+        "ProductVersion" = "8:1.5.0"
+        "Manufacturer" = "8:Mike Fourie"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Controlled Vocabulary (Outlook 2010)"
+        "Title" = "8:Controlled Vocabulary 1.5 for Outlook 2010"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Mike Fourie"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Controlled Vocabulary (Outlook 2010)"
-        "ARPURLINFOABOUT" = "8:"
+        "ARPCOMMENTS" = "8:Controlled Vocabulary 1.5 for Outlook 2010"
+        "ARPURLINFOABOUT" = "8:http://mikefourie.wordpress.com/"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -992,7 +1151,7 @@
                                                                             "Condition" = "8:"
                                                                             "Transitive" = "11:FALSE"
                                                                             "ValueTypes" = "3:1"
-                                                                            "Value" = "8:[TARGETDIR]Outlook2010CV.vsto|vstolocal"
+                                                                            "Value" = "8:[TARGETDIR]ControlledVocabulary.Outook.vsto|vstolocal"
                                                                             }
                                                                             "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_8873DFFA11664AB186B12A6FD52DD6DA"
                                                                             {
@@ -1095,7 +1254,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:[TARGETDIR]Outlook2010CV.vsto|vstolocal"
+                                                                    "Value" = "8:[TARGETDIR]ControlledVocabulary.Outook.vsto|vstolocal"
                                                                     }
                                                                 }
                                                             }
@@ -1508,7 +1667,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ED12BFC14EEA4F5398085A3340DEECF2"
             {
-            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Debug\\Outlook2010CV.dll"
+            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Debug\\ControlledVocabulary.Outook.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"

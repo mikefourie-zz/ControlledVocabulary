@@ -24,23 +24,13 @@ namespace ControlledVocabulary
     public enum ClientType
     {
         /// <summary>
-        /// Outlook2003 Client
-        /// </summary>
-        Outlook2003 = 0,
-
-        /// <summary>
-        /// Outlook2007 Client
-        /// </summary>
-        Outlook2007 = 1,
-
-        /// <summary>
         /// Outlook2010 Client
         /// </summary>
-        Outlook2010 = 2,
+        Outlook2010,
 
         /// <summary>
         /// WindowsDesktop Client
         /// </summary>
-        WindowsDesktop = 3
+        WindowsDesktop
     }
 }

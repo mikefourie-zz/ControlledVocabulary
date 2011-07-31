@@ -1,7 +1,7 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
 // <copyright file="ThisAddIn.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
-namespace Outlook2010CV
+namespace ControlledVocabulary.Outook
 {
     using ControlledVocabulary;
 

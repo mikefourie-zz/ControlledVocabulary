@@ -8,11 +8,5 @@
     <Setting Name="WindowWidth" Type="System.String" Scope="User">
       <Value Profile="(Default)">448</Value>
     </Setting>
-    <Setting Name="CopyToClipboard" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="CallMailTo" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

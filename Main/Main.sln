@@ -5,6 +5,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{90AB78
 	ProjectSection(SolutionItems) = preProject
 		Common\CommonAssemblyInfo.cs = Common\CommonAssemblyInfo.cs
 		Common\ControlledVocabulary.ruleset = Common\ControlledVocabulary.ruleset
+		Common\settings.xml = Common\settings.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{96119340-C0A1-445E-8942-CF97B0949CE1}"
@@ -73,7 +74,6 @@ Global
 		{8582DA15-2292-4816-990B-3BF2F28E1C74}.Release|x86.ActiveCfg = Release|Any CPU
 		{30606324-AC3F-4702-A63C-075E538F9277}.Debug|Any CPU.ActiveCfg = Debug
 		{30606324-AC3F-4702-A63C-075E538F9277}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{30606324-AC3F-4702-A63C-075E538F9277}.Debug|Mixed Platforms.Build.0 = Debug
 		{30606324-AC3F-4702-A63C-075E538F9277}.Debug|x86.ActiveCfg = Debug
 		{30606324-AC3F-4702-A63C-075E538F9277}.Debug|x86.Build.0 = Debug
 		{30606324-AC3F-4702-A63C-075E538F9277}.Release|Any CPU.ActiveCfg = Release
@@ -100,6 +100,7 @@ Global
 		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|Any CPU.ActiveCfg = Release
 		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|Any CPU.Build.0 = Release
 		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|Mixed Platforms.ActiveCfg = Release
+		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|Mixed Platforms.Build.0 = Release
 		{7B870082-66D6-4463-846B-6BBCF4D31C69}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

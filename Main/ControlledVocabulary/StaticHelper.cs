@@ -9,22 +9,141 @@ namespace ControlledVocabulary
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Management;
     using System.Text;
+    using System.Xml;
     using System.Xml.Serialization;
+    using Ionic.Zip;
 
     public static class StaticHelper
     {
         public const string SplitSequence = "...";
 
-        public static void CheckForUpdates()
+        public static bool UpgradeButton(ButtonConfiguration buttonConfig, FileSystemInfo file)
         {
+            LogMessage(MessageType.Info, "Checking Menu Versions");
+
             try
             {
-                // Get the installation path
-                DirectoryInfo installationPath = GetInstallationPath();
+                using (System.Net.WebClient client = new System.Net.WebClient())
+                {
+                    // prevent file caching by windows
+                    client.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
 
+                    if (string.IsNullOrEmpty(buttonConfig.versionUrl))
+                    {
+                        return false;
+                    }
+
+                    Stream myStream = client.OpenRead(buttonConfig.versionUrl);
+                    if (myStream != null)
+                    {
+                        using (StreamReader sr = new StreamReader(myStream))
+                        {
+                            string latestVersion = sr.ReadToEnd();
+                            if (latestVersion != buttonConfig.currentVersion)
+                            {
+                                // Download the latest version
+                                DeployZippedButton(buttonConfig.sourceUrl, file.Name);
+                                return true;
+                            }
+                        }
+                    }
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogMessage(MessageType.Error, "Update check failed." + ex.Message);
+
+                return false;
+
+                // swallow the error.
+            }
+        }
+
+        public static void DeployZippedButton(string sourceUrl, string buttonName)
+        {
+            using (System.Net.WebClient client2 = new System.Net.WebClient())
+            {
+                client2.DownloadFile(sourceUrl, StaticHelper.GetCachePath().FullName + @"\" + buttonName + ".zip");
+            }
+
+            RemoveContent(new DirectoryInfo(Path.Combine(StaticHelper.GetButtonsPath().FullName, buttonName)));                                
+            using (ZipFile zip = ZipFile.Read(StaticHelper.GetCachePath().FullName + @"\" + buttonName + ".zip"))
+            {
+                foreach (ZipEntry e in zip)
+                {
+                    e.Extract(StaticHelper.GetButtonsPath().FullName, ExtractExistingFileAction.OverwriteSilently);
+                }
+            }
+
+            RemoveContent(StaticHelper.GetCachePath());
+        }
+
+        public static void RemoveContent(DirectoryInfo dir)
+        {
+            if (!dir.Exists)
+            {
+                return;
+            }
+
+            LogMessage(MessageType.Info, string.Format(CultureInfo.CurrentCulture, "Removing Content from Folder: {0}", dir.FullName));
+            FileSystemInfo[] infos = dir.GetFileSystemInfos("*");
+            foreach (FileSystemInfo i in infos)
+            {
+                // Check to see if this is a DirectoryInfo object.
+                if (i is DirectoryInfo)
+                {
+                    string dirObject = string.Format(CultureInfo.CurrentCulture, "win32_Directory.Name='{0}'", i.FullName);
+                    using (ManagementObject mdir = new ManagementObject(dirObject))
+                    {
+                        mdir.Get();
+                        ManagementBaseObject outParams = mdir.InvokeMethod("Delete", null, null);
+
+                        // ReturnValue should be 0, else failure
+                        if (outParams != null)
+                        {
+                            if (Convert.ToInt32(outParams.Properties["ReturnValue"].Value, CultureInfo.CurrentCulture) != 0)
+                            {
+                                LogMessage(MessageType.Error, string.Format(CultureInfo.CurrentCulture, "Directory deletion error: ReturnValue: {0}", outParams.Properties["ReturnValue"].Value));
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            LogMessage(MessageType.Error, "The ManagementObject call to invoke Delete returned null.");
+                            return;
+                        }
+                    }
+                }
+                else if (i is FileInfo)
+                {
+                    // First make sure the file is writable.
+                    FileAttributes fileAttributes = System.IO.File.GetAttributes(i.FullName);
+
+                    // If readonly attribute is set, reset it.
+                    if ((fileAttributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                    {
+                        System.IO.File.SetAttributes(i.FullName, fileAttributes ^ FileAttributes.ReadOnly);
+                    }
+
+                    if (i.Exists)
+                    {
+                        System.IO.File.Delete(i.FullName);
+                    }
+                }
+            }
+        }
+
+        public static void CheckForMenuXmlUpdates()
+        {
+            LogMessage(MessageType.Info, "Checking for Menu content updates");
+            try
+            {
+                DirectoryInfo installationPath = GetInstallationPath();
                 XmlSerializer deserializer = new XmlSerializer(typeof(ButtonConfiguration));
-                ButtonConfiguration buttonConfig;
 
                 // Iterate over Add-ins found
                 DirectoryInfo buttonRoot = new DirectoryInfo(Path.Combine(installationPath.FullName, "Buttons"));
@@ -32,6 +151,7 @@ namespace ControlledVocabulary
                 foreach (FileInfo file in buttons.Select(button => new FileInfo(Path.Combine(button.FullName, "config.xml"))))
                 {
                     // open the configuration file for the button
+                    ButtonConfiguration buttonConfig;
                     using (FileStream buttonStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                     {
                         buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
@@ -51,29 +171,46 @@ namespace ControlledVocabulary
                             // prevent file caching by windows
                             client.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
 
-                            Stream myStream = client.OpenRead(buttonConfig.onlineUrl);
-                            if (myStream != null)
+                            // check if we need to update the whole button or just look for structure updates.
+                            if (!UpgradeButton(buttonConfig, file))
                             {
-                                using (StreamReader sr = new StreamReader(myStream))
+                                Stream myStream = client.OpenRead(buttonConfig.onlineUrl);
+                                if (myStream != null)
                                 {
-                                    string latestMenu = sr.ReadToEnd();
-                                    if (latestMenu != currentMenu)
+                                    using (StreamReader sr = new StreamReader(myStream))
                                     {
-                                        using (TextWriter tw = new StreamWriter(Path.Combine(file.DirectoryName, @"button.xml")))
+                                        string latestMenu = sr.ReadToEnd();
+                                        if (latestMenu != currentMenu)
                                         {
-                                            LogMessage(MessageType.Info, "Updating menu with online updates");
-                                            tw.Write(latestMenu);
+                                            FileInfo f = new FileInfo(Path.Combine(file.DirectoryName, @"button.xml"));
+
+                                            // First make sure the file is writable.
+                                            FileAttributes fileAttributes = File.GetAttributes(f.FullName);
+
+                                            // If readonly attribute is set, reset it.
+                                            if ((fileAttributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                                            {
+                                                File.SetAttributes(f.FullName, fileAttributes ^ FileAttributes.ReadOnly);
+                                            }
+
+                                            using (TextWriter tw = new StreamWriter(f.FullName))
+                                            {
+                                                LogMessage(MessageType.Info, "Updating menu with online updates");
+                                                tw.Write(latestMenu);
+                                            }
                                         }
                                     }
-                                }
+                                }                                
                             }
                         }
                     }
                 }
+
+                StaticHelper.SetApplicationSetting("LastUpdateCheckDate", DateTime.Now.ToString());
             }
             catch (Exception ex)
             {
-                LogMessage(MessageType.Warning, "Update check failed." + ex.Message);
+                LogMessage(MessageType.Error, "Update check failed." + ex.Message);
 
                 // swallow the error.
             }
@@ -91,6 +228,31 @@ namespace ControlledVocabulary
             }
 
             return installationPath;
+        }
+
+        public static DirectoryInfo GetCachePath()
+        {
+            DirectoryInfo cachePath = new DirectoryInfo(string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary\Cache", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)));
+            if (!cachePath.Exists)
+            {
+                cachePath.Create();
+            }
+
+            return cachePath;
+        }
+
+        public static DirectoryInfo GetButtonsPath()
+        {
+            DirectoryInfo buttonsPath = new DirectoryInfo(string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary\Buttons", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)));
+            string paths = string.Empty;
+            if (!buttonsPath.Exists)
+            {
+                string message = string.Format(CultureInfo.InvariantCulture, "Buttons Path not found: {0}", paths);
+                LogMessage(MessageType.Error, message);
+                throw new ArgumentException(message);
+            }
+
+            return buttonsPath;
         }
 
         public static Bitmap GetImage(string image)
@@ -233,6 +395,22 @@ namespace ControlledVocabulary
             return buttonConfig.guidanceUrl;
         }
 
+        public static string GetStandardSuffix(string buttonId)
+        {
+            // Get the installation path
+            DirectoryInfo installationPath = GetInstallationPath();
+            XmlSerializer deserializer = new XmlSerializer(typeof(ButtonConfiguration));
+
+            ButtonConfiguration buttonConfig;
+            FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Buttons\" + buttonId + @"\config.xml"));
+            using (FileStream buttonStream = new FileStream(f.FullName, FileMode.Open, FileAccess.Read))
+            {
+                buttonConfig = (ButtonConfiguration)deserializer.Deserialize(buttonStream);
+            }
+
+            return buttonConfig.standardSuffix;
+        }
+
         public static menu[] GetControlledVocabularyMenus()
         {
             // Get the installation path
@@ -249,7 +427,14 @@ namespace ControlledVocabulary
                 XmlSerializer deserializer = new XmlSerializer(typeof(menu));
                 using (FileStream buttonStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                 {
-                    menus[i] = (menu)deserializer.Deserialize(buttonStream);
+                    try
+                    {
+                        menus[i] = (menu)deserializer.Deserialize(buttonStream);
+                    }
+                    catch (Exception ex)
+                    {
+                        string s = "fff";
+                    }
                 }
                 
                 i++;
@@ -289,6 +474,27 @@ namespace ControlledVocabulary
             {
                 tw.WriteLine(string.Format(CultureInfo.InvariantCulture, "{0} - {1}: {2}", DateTime.Now, messageType, error));
             }
+        }
+
+        public static string GetApplicationSetting(string settingName)
+        {
+            XmlDocument xdoc = new XmlDocument();
+
+            // Get the installation path
+            DirectoryInfo installationPath = GetInstallationPath();
+            xdoc.Load(Path.Combine(installationPath.FullName, "settings.xml"));
+            XmlNode node = xdoc.SelectSingleNode(string.Format("/ControlledVocabularySettings/setting[@name='{0}']", settingName));
+            return node.Attributes["value"].Value;
+        }
+
+        public static void SetApplicationSetting(string settingName, string settingValue)
+        {
+            XmlDocument xdoc = new XmlDocument();
+            DirectoryInfo installationPath = GetInstallationPath();
+            xdoc.Load(Path.Combine(installationPath.FullName, "settings.xml"));
+            XmlNode node = xdoc.SelectSingleNode(string.Format("/ControlledVocabularySettings/setting[@name='{0}']", settingName));
+            node.Attributes["value"].Value = settingValue;
+            xdoc.Save(Path.Combine(installationPath.FullName, "settings.xml"));
         }
     }
 }

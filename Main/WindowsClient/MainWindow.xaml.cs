@@ -110,6 +110,11 @@ namespace ControlledVocabulary
             // build the buttons
             StaticHelper.LogMessage(MessageType.Info, "Building menu");
             this.BuildMenu(buttons);
+
+            if (this.menu1.Items.Count == 0)
+            {
+                this.ShowManager();
+            }
         }
 
         private void BuildMenu(IEnumerable<menu> buttons)
@@ -206,6 +211,11 @@ namespace ControlledVocabulary
         }
 
         private void labelManager_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.ShowManager();
+        }
+
+        private void ShowManager()
         {
             Manager managerWindow = new Manager();
             managerWindow.ShowDialog();

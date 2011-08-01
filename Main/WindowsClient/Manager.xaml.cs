@@ -185,6 +185,7 @@ namespace ControlledVocabulary
         private void buttonCheckForUpdates_Click(object sender, RoutedEventArgs e)
         {
             StaticHelper.CheckForMenuXmlUpdates();
+            MessageBox.Show("Update is complete", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void checkBoxAutoUpdate_Checked(object sender, RoutedEventArgs e)

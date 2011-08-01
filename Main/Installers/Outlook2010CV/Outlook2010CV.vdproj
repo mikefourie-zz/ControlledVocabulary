@@ -1013,7 +1013,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary 1.5 for Outlook 2010"
         "ProductCode" = "8:{81A55F32-7E92-4F61-A17A-766DDF2EFE8C}"
-        "PackageCode" = "8:{C6035C32-DB8B-4079-8DED-A7330251947F}"
+        "PackageCode" = "8:{159781C9-4CBB-4B8A-9966-E288CC3323B1}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"
@@ -1527,7 +1527,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1F860E82F710448AA02631F9570651A7"
             {
-            "SourcePath" = "8:..\\..\\WindowsClient\\obj\\x86\\Debug\\Controlled Vocabulary Windows Client.exe"
+            "SourcePath" = "8:..\\..\\WindowsClient\\obj\\x86\\Release\\Controlled Vocabulary Windows Client.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
@@ -1555,7 +1555,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_55CEE453FE944B36AB4C8AA8F3D57E35"
             {
-            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Debug\\ControlledVocabulary.dll"
+            "SourcePath" = "8:..\\..\\ControlledVocabulary\\obj\\Release\\ControlledVocabulary.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"
@@ -1667,7 +1667,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ED12BFC14EEA4F5398085A3340DEECF2"
             {
-            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Debug\\ControlledVocabulary.Outook.dll"
+            "SourcePath" = "8:..\\..\\Addins\\Outlook2010CV\\obj\\Release\\ControlledVocabulary.Outook.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C3840D31168E46B3B271EB7240D130AA"

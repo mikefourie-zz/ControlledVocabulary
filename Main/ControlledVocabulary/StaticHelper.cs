@@ -433,7 +433,7 @@ namespace ControlledVocabulary
                     }
                     catch (Exception ex)
                     {
-                        string s = "fff";
+                        LogMessage(MessageType.Error, ex.ToString());
                     }
                 }
                 

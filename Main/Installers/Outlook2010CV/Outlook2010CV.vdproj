@@ -1013,7 +1013,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary 1.5 for Outlook 2010"
         "ProductCode" = "8:{81A55F32-7E92-4F61-A17A-766DDF2EFE8C}"
-        "PackageCode" = "8:{159781C9-4CBB-4B8A-9966-E288CC3323B1}"
+        "PackageCode" = "8:{04917134-C764-4AC1-BC1A-6CCD028B805E}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"

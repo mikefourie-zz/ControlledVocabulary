@@ -40,13 +40,13 @@
         "Entry"
         {
         "MsmKey" = "8:_AEFDE860924BA022CA75EEA7A5A9C21B"
-        "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
+        "OwnerKey" = "8:_50DFFA7FFAADDA3B246CE577091D32E4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AEFDE860924BA022CA75EEA7A5A9C21B"
-        "OwnerKey" = "8:_50DFFA7FFAADDA3B246CE577091D32E4"
+        "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -387,7 +387,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary 1.5 Client"
         "ProductCode" = "8:{1629B9CF-A8E7-4038-BB27-093ADE3A2CA4}"
-        "PackageCode" = "8:{5819755A-F1DC-41DF-975D-A6E078D2552A}"
+        "PackageCode" = "8:{A07380F2-7112-4B68-B69C-5B619E5C9B04}"
         "UpgradeCode" = "8:{7C6FE84F-3D0F-4215-9D9A-113ADD009DDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -711,7 +711,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_026CF2152B7F4E20A47D6025C3DD6C7B"
             {
-            "SourcePath" = "8:..\\..\\WindowsClient\\obj\\x86\\Debug\\Controlled Vocabulary Windows Client.exe"
+            "SourcePath" = "8:..\\..\\WindowsClient\\obj\\x86\\Release\\Controlled Vocabulary Windows Client.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"

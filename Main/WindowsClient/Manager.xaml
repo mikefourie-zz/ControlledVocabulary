@@ -35,10 +35,14 @@
             </TabItem>
             <TabItem Header="Options">
                 <Grid>
-                    <CheckBox Checked="checkBoxCopySubject_Checked" Content="Copy Subject to Clipboard" Height="16" HorizontalAlignment="Left" IsThreeState="False" Margin="10,10,0,0" Name="checkBoxCopySubject" VerticalAlignment="Top" Unchecked="checkBoxCopySubject_Unchecked" />
-                    <CheckBox Checked="checkBoxCallMailto_Checked" Content="Call mailto: protocol rather than Outlook" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="10,32,0,0" Name="checkBoxCallMailto" VerticalAlignment="Top" Unchecked="checkBoxCallMailto_Unchecked" />
-                    <CheckBox Content="AutoUpdate Buttons" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="10,73,0,0" Name="checkBoxAutoUpdate" VerticalAlignment="Top" Checked="checkBoxAutoUpdate_Checked" Unchecked="checkBoxAutoUpdate_Unchecked" />
-                    <Button Content="Check for updates now" Height="23" HorizontalAlignment="Left" Margin="10,95,0,0" Name="buttonCheckForUpdates" VerticalAlignment="Top" Width="133" Click="buttonCheckForUpdates_Click" />
+                    <CheckBox Content="AutoUpdate Buttons" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="38,138,0,0" Name="checkBoxAutoUpdate" VerticalAlignment="Top" Checked="checkBoxAutoUpdate_Checked" Unchecked="checkBoxAutoUpdate_Unchecked" />
+                    <Button Content="Check for updates now" Height="23" HorizontalAlignment="Left" Margin="38,160,0,0" Name="buttonCheckForUpdates" VerticalAlignment="Top" Width="133" Click="buttonCheckForUpdates_Click" />
+                    <GroupBox Header="Client Specific Options" Height="100" HorizontalAlignment="Left" Margin="17,13,0,0" Name="groupBox1" VerticalAlignment="Top" Width="383">
+                        <Grid>
+                            <CheckBox Checked="checkBoxCopySubject_Checked" Content="Copy Subject to Clipboard (no mail client will be called)" Height="16" HorizontalAlignment="Left" IsThreeState="False" Margin="15,14,0,0" Name="checkBoxCopySubject" VerticalAlignment="Top" Unchecked="checkBoxCopySubject_Unchecked" />
+                            <CheckBox Checked="checkBoxCallMailto_Checked" Content="Call mailto: protocol rather than Outlook" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="15,36,0,0" Name="checkBoxCallMailto" VerticalAlignment="Top" Unchecked="checkBoxCallMailto_Unchecked" />
+                        </Grid>
+                    </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>

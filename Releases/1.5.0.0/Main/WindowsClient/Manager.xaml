@@ -1,0 +1,50 @@
+﻿<Window x:Class="ControlledVocabulary.Manager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Controlled Vocabulary - Manager" Height="480" Width="489" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsEnabled="True" Icon="/Controlled%20Vocabulary%20Windows%20Client;component/Images/ControlledVocabulary.ico">
+    <Grid>
+        <Image Height="53" HorizontalAlignment="Left" Margin="12,0,0,0" Name="image1" Source="/Controlled%20Vocabulary%20Windows%20Client;component/Images/newlogo.png" Stretch="Fill" VerticalAlignment="Top" Width="426" />
+        <TabControl Name="tabControl1" TabStripPlacement="Top" Margin="7,59,0,0" HorizontalAlignment="Left" Width="466" Height="375" VerticalAlignment="Top">
+            <TabItem Header="Buttons" Name="tabItem1">
+                <Grid>
+                    <Label Content="Outlook is running. Restart Outlook to see changes." Height="29" HorizontalAlignment="Left" Margin="112,-28,0,0" Name="labelOutlookRunning" VerticalAlignment="Top" Width="320" Visibility="Hidden" Foreground="Red" FontWeight="Bold" />
+                    <GroupBox Header="Existing Buttons" Height="135" HorizontalAlignment="Left" Margin="6,6,0,0" Name="groupBox4" VerticalAlignment="Top" Width="437">
+                        <Grid>
+                            <ListBox HorizontalAlignment="Left" Name="listBoxButtons" Width="405" Margin="9,23,0,0" Height="54" VerticalAlignment="Top" />
+                            <Button Content="Remove Selected" HorizontalAlignment="Left" Margin="316,83,0,0" Name="buttonRemove" Width="100" Click="buttonRemove_Click" Height="23" VerticalAlignment="Top" />
+                            <Label Content="AppData" Height="28" HorizontalAlignment="Left" Name="labelAppData" VerticalAlignment="Top" Cursor="Hand" MouseLeftButtonUp="labelAppData_MouseLeftButtonUp" Foreground="Blue" Margin="6,0,0,0" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Discover New Buttons" Height="194" HorizontalAlignment="Left" Margin="6,141,0,0" Name="groupBox2" VerticalAlignment="Top" Width="437">
+                        <Grid>
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="9,31,0,0" Name="textBoxDiscover" VerticalAlignment="Top" Width="407" />
+                            <ListBox HorizontalAlignment="Left" ItemsSource="{Binding checkedListItems}" Margin="9,95,0,0" Name="listboxDiscovered" Width="300" Height="69" VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <HierarchicalDataTemplate>
+                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}" />
+                                    </HierarchicalDataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Button Content="Discover" Height="23" HorizontalAlignment="Left" Margin="316,60,0,0" Name="buttonDiscover" VerticalAlignment="Top" Width="100" Click="buttonDiscover_Click_1" />
+                            <Label Content="Discovered Buttons" Height="28" HorizontalAlignment="Left" Margin="7,72,0,0" Name="label2" VerticalAlignment="Top" />
+                            <Label Content="Path / URL" Height="28" HorizontalAlignment="Left" Margin="6,7,0,0" Name="label4" VerticalAlignment="Top" />
+                            <Button Content="Add Selected" Height="23" HorizontalAlignment="Left" Margin="316,141,0,0" Name="buttonAddDiscovered" VerticalAlignment="Top" Width="100" Click="buttonAddDiscovered_Click_1" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Options">
+                <Grid>
+                    <CheckBox Content="AutoUpdate Buttons" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="38,138,0,0" Name="checkBoxAutoUpdate" VerticalAlignment="Top" Checked="checkBoxAutoUpdate_Checked" Unchecked="checkBoxAutoUpdate_Unchecked" />
+                    <Button Content="Check for updates now" Height="23" HorizontalAlignment="Left" Margin="38,160,0,0" Name="buttonCheckForUpdates" VerticalAlignment="Top" Width="133" Click="buttonCheckForUpdates_Click" />
+                    <GroupBox Header="Client Specific Options" Height="100" HorizontalAlignment="Left" Margin="17,13,0,0" Name="groupBox1" VerticalAlignment="Top" Width="383">
+                        <Grid>
+                            <CheckBox Checked="checkBoxCopySubject_Checked" Content="Copy Subject to Clipboard (no mail client will be called)" Height="16" HorizontalAlignment="Left" IsThreeState="False" Margin="15,14,0,0" Name="checkBoxCopySubject" VerticalAlignment="Top" Unchecked="checkBoxCopySubject_Unchecked" />
+                            <CheckBox Checked="checkBoxCallMailto_Checked" Content="Call mailto: protocol rather than Outlook" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="15,36,0,0" Name="checkBoxCallMailto" VerticalAlignment="Top" Unchecked="checkBoxCallMailto_Unchecked" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

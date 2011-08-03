@@ -284,7 +284,51 @@ namespace ControlledVocabulary.Outook
                     }
                 }
 
-                newMeeting.Display();
+                if (control.Context is Inspector)
+                {
+                    Inspector inspector = (Inspector)control.Context;
+                    if (inspector.CurrentItem is AppointmentItem)
+                    {
+                        AppointmentItem m = inspector.CurrentItem as AppointmentItem;
+
+                        // Get the recipients
+                        string[] recipients2 = StaticHelper.GetRecipients(idParts[0], control.Id);
+                        if (!string.IsNullOrEmpty(recipients2[0]))
+                        {
+                            foreach (Recipient recipRequired in recipients2[0].Split(new[] { ';' }).Select(s => newMeeting.Recipients.Add(s)))
+                            {
+                                recipRequired.Type = (int)OlMeetingRecipientType.olRequired;
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(recipients2[1]))
+                        {
+                            foreach (Recipient recipOptional in recipients2[1].Split(new[] { ';' }).Select(s => newMeeting.Recipients.Add(s)))
+                            {
+                                recipOptional.Type = (int)OlMeetingRecipientType.olOptional;
+                            }
+                        }
+
+                        if (string.IsNullOrEmpty(m.Subject))
+                        {
+                            m.Subject = newMeeting.Subject;
+                        }
+                        else
+                        {
+                            string standardSuffix = StaticHelper.GetStandardSuffix(idParts[0]);
+                            if (!string.IsNullOrEmpty(standardSuffix))
+                            {
+                                newMeeting.Subject = newMeeting.Subject.Replace(standardSuffix, string.Empty);
+                            }
+
+                            m.Subject = newMeeting.Subject + m.Subject;
+                        }
+                    }
+                }
+                else
+                {
+                    newMeeting.Display();
+                }
             }
             catch (System.Exception ex)
             {

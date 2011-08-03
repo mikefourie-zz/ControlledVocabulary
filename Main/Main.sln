@@ -5,6 +5,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{90AB78
 	ProjectSection(SolutionItems) = preProject
 		Common\CommonAssemblyInfo.cs = Common\CommonAssemblyInfo.cs
 		Common\ControlledVocabulary.ruleset = Common\ControlledVocabulary.ruleset
+		WindowsClient\License.rtf = WindowsClient\License.rtf
 		Common\settings.xml = Common\settings.xml
 	EndProjectSection
 EndProject

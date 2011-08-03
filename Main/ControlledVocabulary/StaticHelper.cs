@@ -491,10 +491,20 @@ namespace ControlledVocabulary
         {
             XmlDocument xdoc = new XmlDocument();
             DirectoryInfo installationPath = GetInstallationPath();
-            xdoc.Load(Path.Combine(installationPath.FullName, "settings.xml"));
+            string fileName = Path.Combine(installationPath.FullName, "settings.xml");
+            xdoc.Load(fileName);
+
+            FileAttributes fileAttributes = System.IO.File.GetAttributes(fileName);
+
+            // If readonly attribute is set, reset it.
+            if ((fileAttributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+            {
+                System.IO.File.SetAttributes(fileName, fileAttributes ^ FileAttributes.ReadOnly);
+            }
+
             XmlNode node = xdoc.SelectSingleNode(string.Format("/ControlledVocabularySettings/setting[@name='{0}']", settingName));
             node.Attributes["value"].Value = settingValue;
-            xdoc.Save(Path.Combine(installationPath.FullName, "settings.xml"));
+            xdoc.Save(fileName);
         }
     }
 }

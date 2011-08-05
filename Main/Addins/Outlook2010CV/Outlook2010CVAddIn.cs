@@ -168,7 +168,12 @@ namespace ControlledVocabulary.Outook
                 newEmail.Subject = subject;
                 newEmail.Importance = importance;
 
-                string from = StaticHelper.GetFromAccount(idParts[0]);
+                string from = StaticHelper.GetApplicationSetting("MasterEmailAccount");
+                if (string.IsNullOrEmpty(from))
+                {
+                    from = StaticHelper.GetFromAccount(idParts[0]);
+                }
+
                 if (!string.IsNullOrEmpty(from))
                 {
                     // Retrieve the account that has the specific SMTP address.
@@ -191,12 +196,15 @@ namespace ControlledVocabulary.Outook
                         m.BCC = newEmail.BCC;
                         m.Importance = newEmail.Importance;
 
-                        // Retrieve the account that has the specific SMTP address.
-                        Account account = GetAccountForEmailAddress(outlookApp, from);
-                        if (account != null)
+                        if (!string.IsNullOrEmpty(from))
                         {
-                            // Use this account to send the e-mail.
-                            m.SendUsingAccount = account;
+                            // Retrieve the account that has the specific SMTP address.
+                            Account account = GetAccountForEmailAddress(outlookApp, from);
+                            if (account != null)
+                            {
+                                // Use this account to send the e-mail.
+                                m.SendUsingAccount = account;
+                            }
                         }
 
                         if (string.IsNullOrEmpty(m.Subject))
@@ -272,7 +280,12 @@ namespace ControlledVocabulary.Outook
                 newMeeting.Subject = subject;
                 newMeeting.Importance = importance;
 
-                string from = StaticHelper.GetFromAccount(idParts[0]);
+                string from = StaticHelper.GetApplicationSetting("MasterEmailAccount");
+                if (string.IsNullOrEmpty(from))
+                {
+                    from = StaticHelper.GetFromAccount(idParts[0]);
+                }
+ 
                 if (!string.IsNullOrEmpty(from))
                 {
                     // Retrieve the account that has the specific SMTP address.
@@ -323,6 +336,17 @@ namespace ControlledVocabulary.Outook
 
                             m.Subject = newMeeting.Subject + m.Subject;
                         }
+
+                        if (!string.IsNullOrEmpty(from))
+                        {
+                            // Retrieve the account that has the specific SMTP address.
+                            Account account = GetAccountForEmailAddress(outlookApp, from);
+                            if (account != null)
+                            {
+                                // Use this account to send the e-mail.
+                                m.SendUsingAccount = account;
+                            }
+                        }
                     }
                 }
                 else
@@ -341,12 +365,15 @@ namespace ControlledVocabulary.Outook
         {
             // Loop over the Accounts collection of the current Outlook session.
             Accounts accounts = application.Session.Accounts;
-            foreach (Account account in accounts.Cast<Account>().Where(account => account.SmtpAddress == smtpAddress))
+            foreach (Account account in accounts)
             {
-                return account;
+                if (account.SmtpAddress == smtpAddress || account.DisplayName == smtpAddress)
+                {
+                    return account;
+                }
             }
 
-            StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InstalledUICulture, "No Account with SmtpAddress: {0} exists.", smtpAddress));
+            StaticHelper.LogMessage(MessageType.Error, string.Format(CultureInfo.InstalledUICulture, "No Account with SmtpAddress or DisplayName: {0} exists.", smtpAddress));
             return null;
         }
     }

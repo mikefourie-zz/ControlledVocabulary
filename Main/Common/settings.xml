@@ -5,4 +5,5 @@
     <setting name="LastUpdateCheckDate" value=""/>
     <setting name="UpdateCheckFrequency" value="3"/>
     <setting name="ErrorEmail" value="controlledvocab@freetodev.com"/>
+    <setting name="MasterEmailAccount" value=""/>
 </ControlledVocabularySettings>

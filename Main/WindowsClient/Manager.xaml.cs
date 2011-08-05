@@ -21,9 +21,9 @@ namespace ControlledVocabulary
     /// </summary>
     public partial class Manager
     {
-        private readonly bool initializing = true;
         private readonly List<CheckedListBoxItem> checkedListItems = new List<CheckedListBoxItem>();
         private XmlDocument xdoc;
+        private bool initializing = true;
 
         /// <summary>
         /// Initializes a new instance of the Manager class
@@ -32,7 +32,6 @@ namespace ControlledVocabulary
         {
             InitializeComponent();
             this.checkBoxAutoUpdate.IsChecked = Convert.ToBoolean(StaticHelper.GetApplicationSetting("AutoUpdate"));
-            this.initializing = false;
         }
 
         /// <summary>
@@ -44,34 +43,12 @@ namespace ControlledVocabulary
             InitializeComponent();
             this.textBoxDiscover.Text = cvcfPath;
             this.DiscoverConfig();
-            this.initializing = false;
-        }
-
-        private static void CopyAll(DirectoryInfo source, DirectoryInfo target)
-        {
-            // Check if the target directory exists, if not, create it.
-            if (Directory.Exists(target.FullName) == false)
-            {
-                Directory.CreateDirectory(target.FullName);
-            }
-
-            // Copy each file into it's new directory.
-            foreach (FileInfo fi in source.GetFiles())
-            {
-                Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
-                fi.CopyTo(Path.Combine(target.ToString(), fi.Name), true);
-            }
-
-            // Copy each subdirectory using recursion.
-            foreach (DirectoryInfo subdir in source.GetDirectories())
-            {
-                DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(subdir.Name);
-                CopyAll(subdir, nextTargetSubDir);
-            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.initializing = false;
+
             // get the buttons install location
             this.labelAppData.Content = string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
             this.GetButtons();
@@ -91,6 +68,7 @@ namespace ControlledVocabulary
 
             this.checkBoxCallMailto.IsChecked = Convert.ToBoolean(StaticHelper.GetApplicationSetting("CallMailtoProtocol"));
             this.checkBoxCopySubject.IsChecked = Convert.ToBoolean(StaticHelper.GetApplicationSetting("CopySubjectToClipboard"));
+            this.textBoxMasterEmailAccount.Text = StaticHelper.GetApplicationSetting("MasterEmailAccount");
         }
 
         private void GetButtons()
@@ -190,32 +168,67 @@ namespace ControlledVocabulary
 
         private void checkBoxAutoUpdate_Checked(object sender, RoutedEventArgs e)
         {
+            if (this.initializing)
+            {
+                return;
+            }
+
             StaticHelper.SetApplicationSetting("AutoUpdate", this.checkBoxAutoUpdate.IsChecked.ToString());
         }
 
         private void checkBoxAutoUpdate_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (this.initializing)
+            {
+                return;
+            }
+
             StaticHelper.SetApplicationSetting("AutoUpdate", this.checkBoxAutoUpdate.IsChecked.ToString());
         }
 
         private void checkBoxCallMailto_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (this.initializing)
+            {
+                return;
+            }
+
             StaticHelper.SetApplicationSetting("CallMailtoProtocol", this.checkBoxCallMailto.IsChecked.ToString());
         }
 
         private void checkBoxCallMailto_Checked(object sender, RoutedEventArgs e)
         {
+            if (this.initializing)
+            {
+                return;
+            }
+
             StaticHelper.SetApplicationSetting("CallMailtoProtocol", this.checkBoxCallMailto.IsChecked.ToString());
         }
 
         private void checkBoxCopySubject_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (this.initializing)
+            {
+                return;
+            }
+
             StaticHelper.SetApplicationSetting("CopySubjectToClipboard", this.checkBoxCopySubject.IsChecked.ToString());
         }
 
         private void checkBoxCopySubject_Checked(object sender, RoutedEventArgs e)
         {
+            if (this.initializing)
+            {
+                return;
+            }
+
             StaticHelper.SetApplicationSetting("CopySubjectToClipboard", this.checkBoxCopySubject.IsChecked.ToString());
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            StaticHelper.SetApplicationSetting("MasterEmailAccount", this.textBoxMasterEmailAccount.Text);
         }
     }
 }

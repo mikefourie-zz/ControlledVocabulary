@@ -484,7 +484,15 @@ namespace ControlledVocabulary
             DirectoryInfo installationPath = GetInstallationPath();
             xdoc.Load(Path.Combine(installationPath.FullName, "settings.xml"));
             XmlNode node = xdoc.SelectSingleNode(string.Format("/ControlledVocabularySettings/setting[@name='{0}']", settingName));
-            return node.Attributes["value"].Value;
+            if (node == null)
+            {
+                LogMessage(MessageType.Error, string.Format("SettingName: {0} not found in settings.xml", settingName));
+                return string.Empty;
+            }
+            else
+            {
+                return node.Attributes["value"].Value;
+            }
         }
 
         public static void SetApplicationSetting(string settingName, string settingValue)
@@ -503,7 +511,22 @@ namespace ControlledVocabulary
             }
 
             XmlNode node = xdoc.SelectSingleNode(string.Format("/ControlledVocabularySettings/setting[@name='{0}']", settingName));
-            node.Attributes["value"].Value = settingValue;
+            if (node == null)
+            {
+                // Create a new node.
+                XmlElement elem = xdoc.CreateElement("setting");
+                elem.SetAttribute("name", settingName);
+                elem.SetAttribute("value", settingValue);
+
+                // Add the node to the document.
+                XmlElement root = xdoc.DocumentElement;
+                root.AppendChild(elem);
+            }
+            else
+            {
+                node.Attributes["value"].Value = settingValue;
+            }
+
             xdoc.Save(fileName);
         }
     }

@@ -191,9 +191,21 @@ namespace ControlledVocabulary.Outook
                     if (inspector.CurrentItem is MailItem)
                     {
                         MailItem m = inspector.CurrentItem as MailItem;
-                        m.To = newEmail.To;
-                        m.CC = newEmail.CC;
-                        m.BCC = newEmail.BCC;
+                        if (!string.IsNullOrEmpty(newEmail.To))
+                        {
+                            m.To = newEmail.To;
+                        }
+
+                        if (!string.IsNullOrEmpty(newEmail.CC))
+                        {
+                            m.CC = newEmail.CC;
+                        }
+
+                        if (!string.IsNullOrEmpty(newEmail.BCC))
+                        {
+                            m.BCC = newEmail.BCC;
+                        }
+
                         m.Importance = newEmail.Importance;
 
                         if (!string.IsNullOrEmpty(from))

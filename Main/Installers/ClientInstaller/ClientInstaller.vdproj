@@ -413,7 +413,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary 1.5.1 Client"
         "ProductCode" = "8:{BDE14664-E6DD-4EFE-83A8-73D2C87DDCBC}"
-        "PackageCode" = "8:{3304BE22-F834-48A2-8727-8B43137836F4}"
+        "PackageCode" = "8:{8D1E772C-4957-41B2-A82C-AC368E369FF8}"
         "UpgradeCode" = "8:{7C6FE84F-3D0F-4215-9D9A-113ADD009DDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

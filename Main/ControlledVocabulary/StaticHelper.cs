@@ -10,6 +10,8 @@ namespace ControlledVocabulary
     using System.IO;
     using System.Linq;
     using System.Management;
+    using System.Net;
+    using System.Net.Cache;
     using System.Text;
     using System.Xml;
     using System.Xml.Serialization;
@@ -25,11 +27,8 @@ namespace ControlledVocabulary
 
             try
             {
-                using (System.Net.WebClient client = new System.Net.WebClient())
+                using (var client = GetPreconfiguredWebClient())
                 {
-                    // prevent file caching by windows
-                    client.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-
                     if (string.IsNullOrEmpty(buttonConfig.versionUrl))
                     {
                         return false;
@@ -65,9 +64,9 @@ namespace ControlledVocabulary
 
         public static void DeployZippedButton(string sourceUrl, string buttonName)
         {
-            using (System.Net.WebClient client2 = new System.Net.WebClient())
+            using (var client = GetPreconfiguredWebClient())
             {
-                client2.DownloadFile(sourceUrl, StaticHelper.GetCachePath().FullName + @"\" + buttonName + ".zip");
+                client.DownloadFile(sourceUrl, StaticHelper.GetCachePath().FullName + @"\" + buttonName + ".zip");
             }
 
             RemoveContent(new DirectoryInfo(Path.Combine(StaticHelper.GetButtonsPath().FullName, buttonName)));                                
@@ -166,11 +165,8 @@ namespace ControlledVocabulary
                             currentMenu = tr.ReadToEnd();
                         }
 
-                        using (System.Net.WebClient client = new System.Net.WebClient())
+                        using (var client = GetPreconfiguredWebClient())
                         {
-                            // prevent file caching by windows
-                            client.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-
                             // check if we need to update the whole button or just look for structure updates.
                             if (!UpgradeButton(buttonConfig, file))
                             {
@@ -489,10 +485,8 @@ namespace ControlledVocabulary
                 LogMessage(MessageType.Error, string.Format("SettingName: {0} not found in settings.xml", settingName));
                 return string.Empty;
             }
-            else
-            {
-                return node.Attributes["value"].Value;
-            }
+
+            return node.Attributes["value"].Value;
         }
 
         public static void SetApplicationSetting(string settingName, string settingValue)
@@ -528,6 +522,11 @@ namespace ControlledVocabulary
             }
 
             xdoc.Save(fileName);
+        }
+
+        private static WebClient GetPreconfiguredWebClient()
+        {
+            return new WebClient { CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore), UseDefaultCredentials = true };
         }
     }
 }

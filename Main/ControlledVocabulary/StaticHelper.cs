@@ -277,6 +277,30 @@ namespace ControlledVocabulary
             return new Bitmap(f.FullName);
         }
 
+        public static string GetTemplate(string template)
+        {
+            if (string.IsNullOrEmpty(template))
+            {
+                LogMessage(MessageType.Error, "GetTemplate received invalid template parameter");
+                throw new ArgumentException("GetTemplate received invalid template parameter");
+            }
+
+            // First we need to find which Button was clicked
+            string[] templateParts = template.Split(new[] { SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Get the installation path
+            DirectoryInfo installationPath = GetInstallationPath();
+
+            // Get the image file
+            FileInfo f = new FileInfo(Path.Combine(installationPath.FullName, @"Buttons\" + templateParts[0] + @"\Templates\" + templateParts[1] + ".html"));
+            if (!f.Exists)
+            {
+                return string.Empty;
+            }
+
+            return System.IO.File.ReadAllText(f.FullName);
+        }
+
         public static string[] GetRecipients(string buttonId, string controlId)
         {
             // Get the installation path

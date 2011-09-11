@@ -188,6 +188,38 @@ namespace ControlledVocabulary.Outook
                 if (control.Context is Inspector)
                 {
                     Inspector inspector = (Inspector)control.Context;
+
+                    // This handles sharepoint posts
+                    if (inspector.CurrentItem is Microsoft.Office.Interop.Outlook.PostItem)
+                    {
+                        PostItem m = inspector.CurrentItem as PostItem;
+
+                        if (string.IsNullOrEmpty(m.Subject))
+                        {
+                            string standardSuffix = StaticHelper.GetStandardSuffix(idParts[0]);
+                            if (!string.IsNullOrEmpty(standardSuffix))
+                            {
+                                m.Subject = newEmail.Subject.Replace(standardSuffix, string.Empty);
+                            }
+                            else
+                            {
+                                m.Subject = newEmail.Subject;
+                            }
+                        }
+                        else
+                        {
+                            string standardSuffix = StaticHelper.GetStandardSuffix(idParts[0]);
+                            if (!string.IsNullOrEmpty(standardSuffix))
+                            {
+                                newEmail.Subject = newEmail.Subject.Replace(standardSuffix, string.Empty);
+                            }
+
+                            m.Subject = newEmail.Subject + m.Subject;
+                        }
+
+                        return;
+                    }
+
                     if (inspector.CurrentItem is MailItem)
                     {
                         MailItem m = inspector.CurrentItem as MailItem;
@@ -237,6 +269,18 @@ namespace ControlledVocabulary.Outook
                 }
                 else
                 {
+                    string html = StaticHelper.GetTemplate(control.Id);
+                    if (!string.IsNullOrEmpty(html))
+                    {
+                        ////newEmail.HTMLBody += html;
+
+                        ////MailItem newEmail2 = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
+
+                        ////Inspector objSigDoc = newEmail2.GetInspector;
+
+                        ////string s = objSigDoc.ToString();
+                    }
+
                     newEmail.Display();
                 }
             }

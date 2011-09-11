@@ -57,6 +57,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BAC274DE61C94B71B1EB2650CF422148"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
         "MsmSig" = "8:_UNDEFINED"
@@ -222,7 +228,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_50DFFA7FFAADDA3B246CE577091D32E4"
@@ -298,6 +304,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAC274DE61C94B71B1EB2650CF422148"
+            {
+            "SourcePath" = "8:..\\..\\Common\\InstallerLogo.jpg"
+            "TargetName" = "8:InstallerLogo.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -411,24 +437,24 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Controlled Vocabulary 1.6.0 Client"
-        "ProductCode" = "8:{61B34CEB-D786-4625-A79E-6675F8337F54}"
-        "PackageCode" = "8:{15EBB8B8-873B-4612-B66F-3E252C03F971}"
+        "ProductName" = "8:Controlled Vocabulary 1.5.3.0 Client"
+        "ProductCode" = "8:{5CBEE26F-F6D7-40FC-A1D9-2925E886545D}"
+        "PackageCode" = "8:{9D1203DC-D1CE-49B4-A4AF-213731766A79}"
         "UpgradeCode" = "8:{7C6FE84F-3D0F-4215-9D9A-113ADD009DDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.0"
+        "ProductVersion" = "8:1.5.3"
         "Manufacturer" = "8:Mike Fourie"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Controlled Vocabulary 1.6.0 Client"
+        "Title" = "8:Controlled Vocabulary 1.5.3.0 Client"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Mike Fourie"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Controlled Vocabulary 1.6.0 Client"
+        "ARPCOMMENTS" = "8:Controlled Vocabulary 1.5.3.0 Client"
         "ARPURLINFOABOUT" = "8:http://mikefourie.wordpress.com/"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
@@ -560,7 +586,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_BAC274DE61C94B71B1EB2650CF422148"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -610,7 +637,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_BAC274DE61C94B71B1EB2650CF422148"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -641,7 +669,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_BAC274DE61C94B71B1EB2650CF422148"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -685,7 +714,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_BAC274DE61C94B71B1EB2650CF422148"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -729,7 +759,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_BAC274DE61C94B71B1EB2650CF422148"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "EulaText"
@@ -785,7 +816,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_BAC274DE61C94B71B1EB2650CF422148"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "EulaText"

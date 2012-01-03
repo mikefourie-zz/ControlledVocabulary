@@ -1,0 +1,21 @@
+﻿<menu id="ZuluMail" label="Zulu" size="large" imageMso="OutlookGlobe" itemSize="large">
+    <menu id="ZuluMail...MailBug" label="Bug:" image="ZuluMail...Red.png">
+        <button id="ZuluMail...bugArchitecture" label="Architecture" onAction="SendHigh" tag="Bug: Architecture - " screentip="Log an Architecture Bug" supertip="High Importance Recommended"/>
+        <button id="ZuluMail...bugBuild" label="Build" onAction="SendNormal" tag="Bug: Build - "/>
+    </menu>
+    <menu id="ZuluMail...Question" label="Question:" image="ZuluMail...Yellow.png">
+        <button id="ZuluMail...questionArchitecture" label="Architecture" onAction="SendNormal" tag="Question: Architecture - "/>
+        <button id="ZuluMail...questionBuild" label="Build" onAction="SendNormal" tag="Question: Build - "/>
+    </menu>
+    <menu id="ZuluMail...Answer" label="Answer:" image="ZuluMail...Green.png">
+        <button id="ZuluMail...answerAllBugs" label="Build" onAction="SendNormal" tag="Answer: Build - "/>
+    </menu>
+  <menu id="ZuluMail...Meeting" label="Meeting:">
+    <button id="ZuluMail...meetingAllBugs" label="Build" onAction="MeetingNormal" tag="Meeting: Build - "/>
+  </menu>
+    <menuSeparator id="ZuluMail...separator" title="Other"/>
+    <menu id="ZuluMail...Suggestion" label="Suggestion:" image="ZuluMail...Blue.png">
+        <button id="ZuluMail...suggestionArchitecture" label="Architecture" onAction="SendLow" tag="Suggestion: Architecture - "/>
+        <button id="ZuluMail...suggestionBuild" label="Build" onAction="SendLow" tag="Suggestion: Build - "/>
+    </menu>
+</menu>

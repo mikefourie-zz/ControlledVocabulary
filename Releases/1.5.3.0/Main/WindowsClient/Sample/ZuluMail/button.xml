@@ -1,0 +1,18 @@
+<menu id="NestedZuluMail" label="New Zulu Mail" size="large" imageMso="OutlookGlobe" itemSize="large">
+    <menu id="NewZuluMailBug" label="Bug:" image="ZuluMail...Red.png">
+        <button id="ZuluMail...bugArchitecture" label="Arch2itecture" onAction="SendHigh" tag="Bug: Architecture - " screentip="Log an Architecture Bug" supertip="High Importance Recommended"/>
+        <button id="ZuluMail...bugBuild" label="Build" onAction="SendNormal" tag="Bug: Build - "/>
+    </menu>
+    <menu id="NewZuluMailQuestion" label="Question:" image="ZuluMail...Yellow.png">
+        <button id="ZuluMail...questionArchitecture" label="Architecture" onAction="SendNormal" tag="Question: Architecture - "/>
+        <button id="ZuluMail...questionBuild" label="Build" onAction="SendNormal" tag="Question: Build - "/>
+    </menu>
+    <menu id="newZuluMailAnswer" label="Answer:" image="ZuluMail...Green.png">
+        <button id="ZuluMail...answerAllBugs" label="Build" onAction="SendNormal" tag="Answer: Build - "/>
+    </menu>
+    <menuSeparator id="separatorZuluMail" title="Other"/>
+    <menu id="NewZuluMailSuggestion" label="Suggestion:" image="ZuluMail...Blue.png">
+        <button id="ZuluMail...suggestionArchitecture" label="Architecture" onAction="SendLow" tag="Suggestion: Architecture - "/>
+        <button id="ZuluMail...suggestionBuild" label="Build" onAction="SendLow" tag="Suggestion: Build - "/>
+    </menu>
+</menu>

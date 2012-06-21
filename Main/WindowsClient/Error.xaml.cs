@@ -21,7 +21,7 @@ namespace ControlledVocabulary
         /// <param name="ex">exception</param>
         public Error(Exception ex)
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.exception = ex;
             this.textBox1.Text = ex.ToString();
         }

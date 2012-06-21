@@ -99,8 +99,15 @@ namespace ControlledVocabulary
                 {
                     if (MessageBox.Show("Would you like to delete " + this.listBoxButtons.SelectedItem + "?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                     {
-                        Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(this.labelAppData.Content + @"\Buttons\" + this.listBoxButtons.SelectedValue, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                        this.GetButtons();
+                        try
+                        {
+                            Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(this.labelAppData.Content + @"\Buttons\" + this.listBoxButtons.SelectedValue, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                            this.GetButtons();
+                        }
+                        catch (Exception)
+                        {
+                            // do nothing
+                        }
                     }
                 }
             }
@@ -153,7 +160,10 @@ namespace ControlledVocabulary
             {
                 if (item.IsChecked)
                 {
-                    StaticHelper.DeployZippedButton(item.SourcePath, item.Name);
+                    if (!StaticHelper.DeployZippedButton(item.SourcePath, item.Name))
+                    {
+                        MessageBox.Show("Deploy Failed. Check your Event Log", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 
@@ -162,8 +172,14 @@ namespace ControlledVocabulary
 
         private void buttonCheckForUpdates_Click(object sender, RoutedEventArgs e)
         {
-            StaticHelper.CheckForMenuXmlUpdates();
-            MessageBox.Show("Update is complete", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (StaticHelper.CheckForMenuXmlUpdates())
+            {
+                MessageBox.Show("Update is complete", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Update failed. Check your Event Log", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void checkBoxAutoUpdate_Checked(object sender, RoutedEventArgs e)

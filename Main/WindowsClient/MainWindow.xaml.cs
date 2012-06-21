@@ -15,14 +15,14 @@ namespace ControlledVocabulary
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         /// <summary>
         /// Initializes a new instance of the MainWindow class
         /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.Width = Convert.ToInt32(Settings.Default.WindowWidth);
             this.Height = Convert.ToInt32(Settings.Default.WindowHeight);
             FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);

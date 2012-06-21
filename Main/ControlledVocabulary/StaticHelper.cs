@@ -43,8 +43,7 @@ namespace ControlledVocabulary
                             if (latestVersion != buttonConfig.currentVersion)
                             {
                                 // Download the latest version
-                                DeployZippedButton(buttonConfig.sourceUrl, file.Name);
-                                return true;
+                                return DeployZippedButton(buttonConfig.sourceUrl, file.Name);
                             }
                         }
                     }
@@ -62,13 +61,21 @@ namespace ControlledVocabulary
             }
         }
 
-        public static void DeployZippedButton(string sourceUrl, string buttonName)
+        public static bool DeployZippedButton(string sourceUrl, string buttonName)
         {
-            using (var client = GetPreconfiguredWebClient())
+            try
             {
-                client.DownloadFile(sourceUrl, StaticHelper.GetCachePath().FullName + @"\" + buttonName + ".zip");
+                using (var client = GetPreconfiguredWebClient())
+                {
+                    client.DownloadFile(sourceUrl, StaticHelper.GetCachePath().FullName + @"\" + buttonName + ".zip");
+                }
             }
-
+            catch (Exception ex)
+            {
+                LogMessage(MessageType.Error, "DeployZippedButton failed." + ex.Message);
+                return false;
+            }
+            
             RemoveContent(new DirectoryInfo(Path.Combine(StaticHelper.GetButtonsPath().FullName, buttonName)));                                
             using (ZipFile zip = ZipFile.Read(StaticHelper.GetCachePath().FullName + @"\" + buttonName + ".zip"))
             {
@@ -79,6 +86,7 @@ namespace ControlledVocabulary
             }
 
             RemoveContent(StaticHelper.GetCachePath());
+            return true;
         }
 
         public static void RemoveContent(DirectoryInfo dir)
@@ -136,7 +144,7 @@ namespace ControlledVocabulary
             }
         }
 
-        public static void CheckForMenuXmlUpdates()
+        public static bool CheckForMenuXmlUpdates()
         {
             LogMessage(MessageType.Info, "Checking for Menu content updates");
             try
@@ -207,9 +215,10 @@ namespace ControlledVocabulary
             catch (Exception ex)
             {
                 LogMessage(MessageType.Error, "Update check failed." + ex.Message);
-
-                // swallow the error.
+                return false;
             }
+
+            return true;
         }
 
         public static DirectoryInfo GetInstallationPath()

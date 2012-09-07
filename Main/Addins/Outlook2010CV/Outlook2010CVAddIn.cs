@@ -157,7 +157,8 @@ namespace ControlledVocabulary.Outook
             try
             {
                 string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-                Application outlookApp = new ApplicationClass();
+
+                var outlookApp = new Microsoft.Office.Interop.Outlook.Application();
                 MailItem newEmail = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
 
                 // Get the recipients
@@ -296,7 +297,7 @@ namespace ControlledVocabulary.Outook
             try
             {
                 string[] idParts = control.Id.Split(new[] { StaticHelper.SplitSequence }, StringSplitOptions.RemoveEmptyEntries);
-                Application outlookApp = new ApplicationClass();
+                var outlookApp = new Microsoft.Office.Interop.Outlook.Application();
                 AppointmentItem newMeeting = (AppointmentItem)outlookApp.CreateItem(OlItemType.olAppointmentItem);
                 newMeeting.MeetingStatus = OlMeetingStatus.olMeeting;
 

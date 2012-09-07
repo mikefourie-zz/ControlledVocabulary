@@ -143,10 +143,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0"
                     {
-                    "Name" = "8:.NET Framework 3.5 SP1"
-                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
+                    "Name" = "8:Microsoft .NET Framework 4 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0"
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
                     {
@@ -176,7 +176,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v3.5"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.0"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=131000"
                 }
@@ -437,24 +437,24 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Controlled Vocabulary 1.5.4.0 Client"
-        "ProductCode" = "8:{9C88A164-FA24-42F7-BB37-D00DD97521D2}"
-        "PackageCode" = "8:{F523E731-00A8-4FC2-BD8D-A139C662A097}"
+        "ProductName" = "8:Controlled Vocabulary 1.6.0.0 Client"
+        "ProductCode" = "8:{8E7EDEF4-65B4-4330-B777-C81AA861CF70}"
+        "PackageCode" = "8:{FC0C1844-E3AC-4043-A7DE-AE2786451E7A}"
         "UpgradeCode" = "8:{7C6FE84F-3D0F-4215-9D9A-113ADD009DDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.5.4"
+        "ProductVersion" = "8:1.6.0"
         "Manufacturer" = "8:Mike Fourie"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Controlled Vocabulary 1.5.4.0 Client"
+        "Title" = "8:Controlled Vocabulary 1.6.0.0 Client"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Mike Fourie"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Controlled Vocabulary 1.5.4.0 Client"
+        "ARPCOMMENTS" = "8:Controlled Vocabulary 1.6.0.0 Client"
         "ARPURLINFOABOUT" = "8:http://mikefourie.wordpress.com/"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"

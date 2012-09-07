@@ -22,11 +22,24 @@ namespace ControlledVocabulary
         /// </summary>
         public MainWindow()
         {
-            this.InitializeComponent();
-            this.Width = Convert.ToInt32(Settings.Default.WindowWidth);
-            this.Height = Convert.ToInt32(Settings.Default.WindowHeight);
-            FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-            this.Title += " - " + new Version(versionInfo.FileMajorPart, versionInfo.FileMinorPart, versionInfo.FileBuildPart, versionInfo.FilePrivatePart);
+            try
+            {
+                this.InitializeComponent();
+                this.Width = Convert.ToInt32(Settings.Default.WindowWidth);
+                this.Height = Convert.ToInt32(Settings.Default.WindowHeight);
+                FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+                this.Title += " - " + new Version(versionInfo.FileMajorPart, versionInfo.FileMinorPart, versionInfo.FileBuildPart, versionInfo.FilePrivatePart);
+            }
+            catch (Exception ex)
+            {
+                StaticHelper.LogMessage(MessageType.Error, "in error");
+
+                StaticHelper.LogMessage(MessageType.Error, ex.ToString());
+                if (ex.InnerException != null)
+                {
+                    StaticHelper.LogMessage(MessageType.Error, ex.InnerException.Message);
+                }
+            }
         }
 
         private static void Guidance(object sender, RoutedEventArgs e)

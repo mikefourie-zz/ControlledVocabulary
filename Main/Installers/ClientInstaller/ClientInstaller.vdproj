@@ -21,6 +21,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0D8514BF6FE417A1E904EB541AC6FDB5"
+        "OwnerKey" = "8:_78BDA94930A371045D9166C1004B37CC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0D8514BF6FE417A1E904EB541AC6FDB5"
+        "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_13ABB70E29394400963CAA1FA56B1FD6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -39,7 +51,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AEFDE860924BA022CA75EEA7A5A9C21B"
+        "MsmKey" = "8:_78BDA94930A371045D9166C1004B37CC"
         "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -58,7 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AEFDE860924BA022CA75EEA7A5A9C21B"
+        "OwnerKey" = "8:_78BDA94930A371045D9166C1004B37CC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0D8514BF6FE417A1E904EB541AC6FDB5"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -158,7 +176,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                "FrameworkVersion" = "8:.NETFramework,Version=v3.5"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=131000"
                 }
@@ -166,6 +184,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D8514BF6FE417A1E904EB541AC6FDB5"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0D8514BF6FE417A1E904EB541AC6FDB5"
+                    {
+                    "Name" = "8:Ionic.Zip.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Ionic.Zip.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_13ABB70E29394400963CAA1FA56B1FD6"
             {
             "SourcePath" = "8:..\\..\\Common\\settings.xml"
@@ -226,20 +275,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AEFDE860924BA022CA75EEA7A5A9C21B"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78BDA94930A371045D9166C1004B37CC"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.5.4.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_AEFDE860924BA022CA75EEA7A5A9C21B"
+                    "_78BDA94930A371045D9166C1004B37CC"
                     {
-                    "Name" = "8:Ionic.Zip.dll"
+                    "Name" = "8:ControlledVocabulary.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Ionic.Zip.dll"
+            "SourcePath" = "8:ControlledVocabulary.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"
@@ -814,7 +863,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_026CF2152B7F4E20A47D6025C3DD6C7B"
             {
-            "SourcePath" = "8:..\\..\\WindowsClient\\obj\\x86\\Debug\\Controlled Vocabulary Windows Client.exe"
+            "SourcePath" = "8:..\\..\\WindowsClient\\obj\\x86\\Release\\Controlled Vocabulary Windows Client.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"

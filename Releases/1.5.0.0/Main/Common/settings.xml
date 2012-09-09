@@ -1,8 +1,0 @@
-<ControlledVocabularySettings>
-    <setting name="AutoUpdate" value="true"/>
-    <setting name="CopySubjectToClipboard" value="false"/>
-    <setting name="CallMailtoProtocol" value="true"/>
-    <setting name="LastUpdateCheckDate" value=""/>
-    <setting name="UpdateCheckFrequency" value="3"/>
-    <setting name="ErrorEmail" value="controlledvocab@freetodev.com"/>
-</ControlledVocabularySettings>

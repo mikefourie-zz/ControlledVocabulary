@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{90AB786E-5C7E-4E09-B5E9-1152B4D2DE69}"
 	ProjectSection(SolutionItems) = preProject
 		Common\CommonAssemblyInfo.cs = Common\CommonAssemblyInfo.cs

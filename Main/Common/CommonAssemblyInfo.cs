@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mike Fourie")]
 [assembly: AssemblyProduct("Controlled Vocabulary")]
-[assembly: AssemblyCopyright("Copyright © Controlled Vocabulary on CodePlex")]
+[assembly: AssemblyCopyright("Copyright © Mike Fourie")]
 [assembly: AssemblyTrademark("Mike Fourie")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

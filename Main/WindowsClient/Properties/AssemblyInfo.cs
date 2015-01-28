@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="AssemblyInfo.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 using System.Reflection;
 using System.Windows;

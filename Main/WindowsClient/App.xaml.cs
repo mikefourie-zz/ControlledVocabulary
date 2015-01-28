@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="App.xaml.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="App.xaml.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {
@@ -7,7 +7,7 @@ namespace ControlledVocabulary
     using System.Windows;
 
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Interaction logic for App
     /// </summary>
     public partial class App : Application
     {

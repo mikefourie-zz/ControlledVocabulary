@@ -7,28 +7,16 @@
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
-"SccProjectName" = "8:SAK"
-"SccLocalPath" = "8:SAK"
-"SccAuxPath" = "8:SAK"
-"SccProvider" = "8:SAK"
+"SccProjectName" = "8:"
+"SccLocalPath" = "8:"
+"SccAuxPath" = "8:"
+"SccProvider" = "8:"
     "Hierarchy"
     {
         "Entry"
         {
         "MsmKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0D8514BF6FE417A1E904EB541AC6FDB5"
-        "OwnerKey" = "8:_78BDA94930A371045D9166C1004B37CC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0D8514BF6FE417A1E904EB541AC6FDB5"
-        "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,18 +39,30 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_78BDA94930A371045D9166C1004B37CC"
-        "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BAC274DE61C94B71B1EB2650CF422148"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_BC18FD27F4C0B19558B51AF6018E55A4"
+        "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F18501B3B88EA0E0E42600C2D8EEE30E"
+        "OwnerKey" = "8:_BC18FD27F4C0B19558B51AF6018E55A4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F18501B3B88EA0E0E42600C2D8EEE30E"
+        "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_026CF2152B7F4E20A47D6025C3DD6C7B"
         "MsmSig" = "8:_UNDEFINED"
@@ -70,13 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_78BDA94930A371045D9166C1004B37CC"
+        "OwnerKey" = "8:_BC18FD27F4C0B19558B51AF6018E55A4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0D8514BF6FE417A1E904EB541AC6FDB5"
+        "OwnerKey" = "8:_F18501B3B88EA0E0E42600C2D8EEE30E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -184,37 +184,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D8514BF6FE417A1E904EB541AC6FDB5"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_0D8514BF6FE417A1E904EB541AC6FDB5"
-                    {
-                    "Name" = "8:Ionic.Zip.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Ionic.Zip.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_13ABB70E29394400963CAA1FA56B1FD6"
             {
             "SourcePath" = "8:..\\..\\Common\\settings.xml"
@@ -275,14 +244,34 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_78BDA94930A371045D9166C1004B37CC"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAC274DE61C94B71B1EB2650CF422148"
+            {
+            "SourcePath" = "8:..\\..\\Common\\InstallerLogo.jpg"
+            "TargetName" = "8:InstallerLogo.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BC18FD27F4C0B19558B51AF6018E55A4"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.5.4.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_78BDA94930A371045D9166C1004B37CC"
+                    "_BC18FD27F4C0B19558B51AF6018E55A4"
                     {
                     "Name" = "8:ControlledVocabulary.dll"
                     "Attributes" = "3:512"
@@ -306,10 +295,21 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAC274DE61C94B71B1EB2650CF422148"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F18501B3B88EA0E0E42600C2D8EEE30E"
             {
-            "SourcePath" = "8:..\\..\\Common\\InstallerLogo.jpg"
-            "TargetName" = "8:InstallerLogo.jpg"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F18501B3B88EA0E0E42600C2D8EEE30E"
+                    {
+                    "Name" = "8:Ionic.Zip.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Ionic.Zip.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8B453627B0804F42B4DAF7CAC55321F3"
             "Condition" = "8:"
@@ -323,7 +323,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -437,24 +437,24 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Controlled Vocabulary 1.6.0.0 Client"
-        "ProductCode" = "8:{8E7EDEF4-65B4-4330-B777-C81AA861CF70}"
-        "PackageCode" = "8:{FC0C1844-E3AC-4043-A7DE-AE2786451E7A}"
+        "ProductName" = "8:Controlled Vocabulary 1.7.0.0 Client"
+        "ProductCode" = "8:{924E0DD7-CE1A-4F3B-9D1A-562F504D8A90}"
+        "PackageCode" = "8:{EC519B07-CC16-4E8D-A84F-CB084B5CDD4C}"
         "UpgradeCode" = "8:{7C6FE84F-3D0F-4215-9D9A-113ADD009DDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.0"
+        "ProductVersion" = "8:1.7.0"
         "Manufacturer" = "8:Mike Fourie"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Controlled Vocabulary 1.6.0.0 Client"
+        "Title" = "8:Controlled Vocabulary 1.7.0.0 Client"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Mike Fourie"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Controlled Vocabulary 1.6.0.0 Client"
+        "ARPCOMMENTS" = "8:Controlled Vocabulary 1.7.0.0 Client"
         "ARPURLINFOABOUT" = "8:http://mikefourie.wordpress.com/"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"

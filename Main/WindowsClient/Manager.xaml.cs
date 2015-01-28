@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Manager.xaml.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="Manager.xaml.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {
@@ -17,7 +17,7 @@ namespace ControlledVocabulary
     using MessageBox = System.Windows.Forms.MessageBox;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow
     /// </summary>
     public partial class Manager
     {

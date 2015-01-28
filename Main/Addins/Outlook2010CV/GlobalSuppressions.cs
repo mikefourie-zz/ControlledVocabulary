@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="GlobalSuppressions.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="GlobalSuppressions.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Scope = "member", Target = "Outlook2010CV.Outlook2010CVAddIn.#Guidance(Microsoft.Office.Core.IRibbonControl)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Scope = "member", Target = "Outlook2010CV.Outlook2010CVAddIn.#SendHigh(Microsoft.Office.Core.IRibbonControl)")]

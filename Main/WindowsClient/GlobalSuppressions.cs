@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="GlobalSuppressions.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="GlobalSuppressions.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1014:MarkAssembliesWithClsCompliant")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "ControlledVocabulary.Manager.#Window_Loaded(System.Object,System.Windows.RoutedEventArgs)")]

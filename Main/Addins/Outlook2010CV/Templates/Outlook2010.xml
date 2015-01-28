@@ -2,7 +2,7 @@
 <customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2009/07/customui" loadImage="LoadImages">
     <ribbon>
         <tabs>
-            <tab id="ControlledVocabTab" label="Controlled Vocab">
+            <tab id="ControlledVocabTab" label="CONTROLLED VOCAB">
                 <group label="Communicate With Care" id="ControlledVocabButtons" >
                     DLBUTTONPLACHOLDER_DONOTREMOVE
                 </group>

@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="CommonAssemblyInfo.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="CommonAssemblyInfo.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //---------------------------------------------------------------------------------------------------------------------------------------
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -11,5 +11,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("Mike Fourie")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.6.0.0")]
-[assembly: AssemblyFileVersion("1.6.0.0")]
+[assembly: AssemblyVersion("1.7.0.0")]
+[assembly: AssemblyFileVersion("1.7.0.0")]

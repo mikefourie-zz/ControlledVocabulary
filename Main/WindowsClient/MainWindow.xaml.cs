@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="MainWindow.xaml.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {
@@ -13,7 +13,7 @@ namespace ControlledVocabulary
     using ControlledVocabulary.Properties;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow
     /// </summary>
     public partial class MainWindow
     {
@@ -243,9 +243,9 @@ namespace ControlledVocabulary
             this.BuildMenu(buttons);
         }
 
-        private void labelCodePlex_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void labelGitHub_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Process.Start(@"http://controlledvocabulary.codeplex.com");
+            Process.Start(@"https://github.com/mikefourie/ControlledVocabulary");
         }
     }
 }

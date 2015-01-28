@@ -52,5 +52,21 @@
       </Rules>
       <AnalyzerSettings />
     </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.MaintainabilityRules">
+      <Rules>
+        <Rule Name="CodeAnalysisSuppressionMustHaveJustification">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
   </Analyzers>
+  <GlobalSettings>
+    <CollectionProperty Name="RecognizedWords">
+      <Value>Wpf</Value>
+      <Value>cvcf</Value>
+    </CollectionProperty>
+  </GlobalSettings>
 </StyleCopSettings>

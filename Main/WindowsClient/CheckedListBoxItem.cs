@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="CheckedListBoxItem.cs">(c) Controlled Vocabulary on CodePlex, 2010. All other rights reserved.</copyright>
+// <copyright file="CheckedListBoxItem.cs">(c) Controlled Vocabulary on GitHub, 2015. All other rights reserved.</copyright>
 //--------------------------------------------------------------------------------------------------------------------------------
 namespace ControlledVocabulary
 {
@@ -14,7 +14,7 @@ namespace ControlledVocabulary
         public int Id { get; set; }
         
         /// <summary>
-        /// Name of hte ListBox item
+        /// Name of the ListBox item
         /// </summary>
         public string Name { get; set; }
 

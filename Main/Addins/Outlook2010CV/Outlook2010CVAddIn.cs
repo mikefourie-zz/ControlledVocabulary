@@ -185,10 +185,43 @@ namespace ControlledVocabulary.Outook
                         newEmail.SendUsingAccount = account;
                     }
                 }
-
-                if (control.Context is Inspector)
+                else
                 {
-                    Inspector inspector = (Inspector)control.Context;
+                    // See if we can determine which email account to send from based on the current folder. User may have multiple mail accounts.
+                    try
+                    {
+                        Microsoft.Office.Interop.Outlook.AddressEntry addrEntry = null;
+
+                        // Get the Store for CurrentFolder.
+                        Microsoft.Office.Interop.Outlook.Folder folder = outlookApp.ActiveExplorer().CurrentFolder as Microsoft.Office.Interop.Outlook.Folder;
+                        if (folder != null)
+                        {
+                            Microsoft.Office.Interop.Outlook.Store store = folder.Store;
+                            Microsoft.Office.Interop.Outlook.Accounts accounts = outlookApp.Session.Accounts;
+
+                            // Enumerate accounts to find account.DeliveryStore for store.
+                            foreach (Microsoft.Office.Interop.Outlook.Account account in accounts)
+                            {
+                                if (account.DeliveryStore.StoreID == store.StoreID)
+                                {
+                                    addrEntry = account.CurrentUser.AddressEntry;
+                                    break;
+                                }
+                            }
+
+                            newEmail.Sender = addrEntry;
+                        }
+                    }
+                    catch 
+                    {
+                     // Intentionally swallow for now
+                    }
+                }
+
+                var context = control.Context as Inspector;
+                if (context != null)
+                {
+                    Inspector inspector = context;
 
                     // This handles sharepoint posts
                     if (inspector.CurrentItem is Microsoft.Office.Interop.Outlook.PostItem)
@@ -198,14 +231,7 @@ namespace ControlledVocabulary.Outook
                         if (string.IsNullOrEmpty(m.Subject))
                         {
                             string standardSuffix = StaticHelper.GetStandardSuffix(idParts[0]);
-                            if (!string.IsNullOrEmpty(standardSuffix))
-                            {
-                                m.Subject = newEmail.Subject.Replace(standardSuffix, string.Empty);
-                            }
-                            else
-                            {
-                                m.Subject = newEmail.Subject;
-                            }
+                            m.Subject = !string.IsNullOrEmpty(standardSuffix) ? newEmail.Subject.Replace(standardSuffix, string.Empty) : newEmail.Subject;
                         }
                         else
                         {
@@ -339,9 +365,10 @@ namespace ControlledVocabulary.Outook
                     }
                 }
 
-                if (control.Context is Inspector)
+                var context = control.Context as Inspector;
+                if (context != null)
                 {
-                    Inspector inspector = (Inspector)control.Context;
+                    Inspector inspector = context;
                     if (inspector.CurrentItem is AppointmentItem)
                     {
                         AppointmentItem m = inspector.CurrentItem as AppointmentItem;

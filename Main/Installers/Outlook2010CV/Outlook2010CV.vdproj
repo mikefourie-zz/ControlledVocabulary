@@ -310,20 +310,20 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.0"
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.VSTORuntime.4.0"
                     {
                     "Name" = "8:Microsoft Visual Studio 2010 Tools for Office Runtime (x86 and x64)"
                     "ProductCode" = "8:Microsoft.VSTORuntime.4.0"
                     }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.4.5"
                     {
-                    "Name" = "8:Windows Installer 3.1"
-                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    "Name" = "8:Windows Installer 4.5"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.4.5"
                     }
                 }
             }
@@ -362,7 +362,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.0"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -632,6 +632,11 @@
             "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_ACFF89A6A0D8D648462A253E7995B28F"
+                    {
+                    "Name" = "8:Ionic.Zip.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Ionic.Zip.dll"
             "TargetName" = "8:"
@@ -709,6 +714,11 @@
             "AssemblyAsmDisplayName" = "8:ControlledVocabulary, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_E5B1AF62F73FF9B59E9AF590ED5AFFA5"
+                    {
+                    "Name" = "8:ControlledVocabulary.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ControlledVocabulary.dll"
             "TargetName" = "8:"
@@ -903,7 +913,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary 1.7.0.0 for Outlook 2013"
         "ProductCode" = "8:{4694A1F7-6F2A-43D4-98DE-3DBB182A6927}"
-        "PackageCode" = "8:{0AFBEEC6-DF98-4349-B299-64C23EC8B952}"
+        "PackageCode" = "8:{0569621E-BD21-491D-A293-71A88A8162C5}"
         "UpgradeCode" = "8:{F29F8168-981A-48AA-B428-54257A27D0AF}"
         "AspNetVersion" = "8:4.0.30128.0"
         "RestartWWWService" = "11:FALSE"

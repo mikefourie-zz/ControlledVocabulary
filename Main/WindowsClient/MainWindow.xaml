@@ -29,7 +29,7 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <Label Content="GitHub" Cursor="Hand" Height="29" Margin="324,76,0,0" Name="labelGitHub" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67" MouseLeftButtonUp="labelGitHub_MouseLeftButtonUp">
+        <Label Content="Dev Site" Cursor="Hand" Height="29" Margin="324,76,0,0" Name="labelGitHub" VerticalAlignment="Top" HorizontalAlignment="Left" Width="67" MouseLeftButtonUp="labelGitHub_MouseLeftButtonUp">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0.009" />

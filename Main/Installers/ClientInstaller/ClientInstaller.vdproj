@@ -143,15 +143,15 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.0"
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
                     }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.4.5"
                     {
-                    "Name" = "8:Windows Installer 3.1"
-                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    "Name" = "8:Windows Installer 4.5"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.4.5"
                     }
                 }
             }
@@ -176,7 +176,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.0"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=131000"
                 }
@@ -439,7 +439,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Controlled Vocabulary 1.7.0.0 Client"
         "ProductCode" = "8:{924E0DD7-CE1A-4F3B-9D1A-562F504D8A90}"
-        "PackageCode" = "8:{EC519B07-CC16-4E8D-A84F-CB084B5CDD4C}"
+        "PackageCode" = "8:{CF923B1B-B176-47E6-B6B8-1696F60F5C5A}"
         "UpgradeCode" = "8:{7C6FE84F-3D0F-4215-9D9A-113ADD009DDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

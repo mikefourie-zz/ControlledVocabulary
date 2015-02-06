@@ -50,7 +50,7 @@ namespace ControlledVocabulary
             this.initializing = false;
 
             // get the buttons install location
-            this.labelAppData.Content = string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            this.labelAppData.Tag = string.Format(CultureInfo.InvariantCulture, @"{0}\Controlled Vocabulary", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
             this.GetButtons();
 
             try
@@ -74,7 +74,7 @@ namespace ControlledVocabulary
         private void GetButtons()
         {
             this.listBoxButtons.Items.Clear();
-            DirectoryInfo d = new DirectoryInfo(this.labelAppData.Content + @"\Buttons");
+            DirectoryInfo d = new DirectoryInfo(this.labelAppData.Tag + @"\Buttons");
             foreach (DirectoryInfo buttonDir in d.GetDirectories())
             {
                 this.listBoxButtons.Items.Add(buttonDir.Name);
@@ -88,20 +88,20 @@ namespace ControlledVocabulary
 
         private void labelAppData_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Process.Start(this.labelAppData.Content.ToString());
+            Process.Start(this.labelAppData.Tag.ToString());
         }
 
         private void buttonRemove_Click(object sender, RoutedEventArgs e)
         {
             if (this.listBoxButtons.SelectedIndex >= 0)
             {
-                if (Directory.Exists(this.labelAppData.Content + @"\Buttons\" + this.listBoxButtons.SelectedValue))
+                if (Directory.Exists(this.labelAppData.Tag + @"\Buttons\" + this.listBoxButtons.SelectedValue))
                 {
                     if (MessageBox.Show("Would you like to delete " + this.listBoxButtons.SelectedItem + "?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                     {
                         try
                         {
-                            Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(this.labelAppData.Content + @"\Buttons\" + this.listBoxButtons.SelectedValue, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                            Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(this.labelAppData.Tag + @"\Buttons\" + this.listBoxButtons.SelectedValue, Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
                             this.GetButtons();
                         }
                         catch (Exception)
